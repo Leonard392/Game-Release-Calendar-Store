@@ -1,27 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logoImageUrl from "../../img/logo.png";
 
 export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light bg-light">
-			<div className="container">
-				<Link to="/">
-					<span className="brand">Samurai Station</span>
+			<div className="container-fluid">
+				<Link className="brand-link" to="/">
+					<p className="brand">Samurai Station</p>
 				</Link>
 
 				<div>
-					<a href="#features">Features</a>
-					<a href="#footer">About Us</a>
+					<a className="center-links" href="#features">Features</a>
+					<a className="center-links" href="#footer">About Us</a>
 				</div>
 
 
 				<div className="ml-auto">
-					<Link to="/demo">
-						<button className="login-btn">Log In</button>
+					<Link className="signup-link" to="/demo">
+						<button className="signup-btn">Get Started</button>
 					</Link>
-					<Link to="/demo">
-						<button className="login-btn">Sign Up</button>
+					<Link className="signup-link" to="/demo">
+						<button className="login-btn">Log In</button>
 					</Link>
 				</div>
 			</div>

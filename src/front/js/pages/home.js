@@ -13,16 +13,14 @@ export const Home = () => {
 		<div>
 			<Navbar/>
 			<div className="main-content">
-				<div>
-					<h1>Let's Get Some Video Games</h1>
+				<div className="left">
+					<h1>Let's Get Some <span>Video Games</span></h1>
 					<p>Welcome to our online video game store! Dive into a world where gaming dreams come true. With a curated selection of the latest titles and beloved classics, we cater to every gamer's taste.</p>
 					<Link to="/login">
-						<button>BUY NOW</button>
+						<button className="left-btn">BUY NOW</button>
 					</Link>
 				</div>
-				<div>
-					<img src={logoImageUrl}/>
-				</div>
+				<img className="logo-img" src={logoImageUrl}/>
 			</div>
 			<Features/>
 		</div>
