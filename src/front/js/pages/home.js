@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import { Navbar } from "../component/navbar";
+import { HomeCarousel } from "../component/carousel";
 import { Features } from "../component/features";
 import logoImageUrl from "../../img/logo.png";
 import "../../styles/home.css";
@@ -22,6 +23,7 @@ export const Home = () => {
 				</div>
 				<img className="logo-img" src={logoImageUrl}/>
 			</div>
+			<HomeCarousel/>
 			<Features/>
 		</div>
 	);
