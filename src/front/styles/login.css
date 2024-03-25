@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-body{
+.login-body{
     height: 100%;
     display: grid;
     place-items: center;
@@ -12,11 +12,7 @@ body{
 }
 
 .login{
-    position: fixed;
-    z-index: 3;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
+    margin-top: 40px;
     width: 90%;
     padding: 70px 30px 44px;
     border-radius: 1.25rem;
@@ -108,6 +104,11 @@ body{
 .login-form > a:hover{
     color: #00CCFF;
 }
+
+.center-links{
+    display: none;
+}
+
 
 @media (width >= 450px){
     .login{
