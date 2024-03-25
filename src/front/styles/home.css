@@ -70,7 +70,7 @@ body{
 }
 
 .logo-img{
-    width: 700px;
+    width: 650px;
 }
 
 .left h1{
@@ -109,8 +109,9 @@ body{
     font-size: 20px;
 }
 
-.featurette{
-    display: flex;
+.myCarousel{
+    background-color: #3AA5FF;
+    align-items: center;
 }
 
 .example-left{
@@ -118,8 +119,7 @@ body{
 }
 
 .example-img{
-    height: 500px;
-    width: 500px;
+    width: 100%;
 }
 
 .example-text{

@@ -6,7 +6,7 @@ export const Navbar = () => {
 		<nav className="navbar navbar-light bg-light">
 			<div className="container-fluid">
 				<Link className="brand-link" to="/">
-					<p className="brand">Samurai Station</p>
+					<p className="brand">Ninja Station</p>
 				</Link>
 
 				<div>
@@ -19,7 +19,7 @@ export const Navbar = () => {
 					<Link className="signup-link" to="/demo">
 						<button className="signup-btn">Get Started</button>
 					</Link>
-					<Link className="signup-link" to="/demo">
+					<Link className="signup-link" to="/login">
 						<button className="login-btn">Log In</button>
 					</Link>
 				</div>
