@@ -5,6 +5,7 @@ import { Navbar } from "../component/navbar.jsx";
 import { HomeCarousel } from "../component/carousel.jsx";
 import { Features } from "../component/features.jsx";
 import logoImageUrl from "../../img/logo.png";
+import logo3 from "../../img/5.webp";
 import "../../styles/home.css";
 
 export const Home = () => {
@@ -21,7 +22,7 @@ export const Home = () => {
 						<button className="left-btn">BUY NOW</button>
 					</Link>
 				</div>
-				<img className="logo-img" src={logoImageUrl}/>
+				<img className="logo-img" src={logo3}/>
 			</div>
 			<HomeCarousel/>
 			<Features/>

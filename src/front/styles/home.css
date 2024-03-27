@@ -8,7 +8,7 @@
 
 body{
     font-family: "Poppins", sans-serif;
-    background-color: #070507;
+    background-color: #000026;
     color: white;
 }
 
@@ -28,28 +28,38 @@ body{
 }
 
 .brand{
-    color: #3AA5FF;
+    color: #000026;
     font-size: 33px;
     font-weight: 600;
 }
 
 .login-btn{
-    color: #3AA5FF;
+    color: #000026;
     padding: 8px 14px;
     border: none;
     margin-right: 14px;
     cursor: pointer;
     background-color: transparent;
+    transition: all 0.3s;
+}
+
+.login-btn:hover{
+    color: #00CCFF;
 }
 
 .signup-btn{
-    background-color: #3AA5FF;
+    background-color: #000026;
     color: white;
     padding: 8px 14px;
     border: none;
     border-radius: 4px;
-    
+    transition: all 0.3s;
 }
+
+.signup-btn:hover{
+    background-color: #00CCFF;
+}
+
 
 .signup-link{
     margin-right: 14px;
@@ -65,7 +75,7 @@ body{
 
 .left{
     width: 700px;
-    background-color: #060405;
+    background-color: #000026;
     padding: 0 80px;
 }
 
@@ -92,10 +102,15 @@ body{
     padding: 8px;
     border-radius: 60px;
     border: none;
+    transition: all 0.3s;
+}
+
+.left-btn:hover{
+    background-color: #00CCFF
 }
 
 .features{
-    background-color: #3AA5FF;
+    background-color: #00CCFF;
     display: flex;
     text-align: center;
     padding-top: 40px;
@@ -110,7 +125,7 @@ body{
 }
 
 .myCarousel{
-    background-color: #3AA5FF;
+    background-color: #00CCFF;
     align-items: center;
 }
 

@@ -1,5 +1,6 @@
 *{
     box-sizing: border-box;
+    
 }
 
 .login-body{
@@ -9,6 +10,7 @@
     margin: 0;
     padding: 0 24px;
     font-family: "Poppins", sans-serif;
+    background-color: #000026;
 }
 
 .login{
@@ -108,7 +110,6 @@
 .center-links{
     display: none;
 }
-
 
 @media (width >= 450px){
     .login{
