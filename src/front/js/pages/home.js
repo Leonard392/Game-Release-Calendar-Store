@@ -12,7 +12,11 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
+
+		
+
 		<div>
+			{console.log(store.getGamesList)}
 			<Navbar/>
 			<div className="main-content">
 				<div className="left">
