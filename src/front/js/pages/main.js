@@ -12,6 +12,7 @@ export const Main = () => {
 	
   return (
 		<div>
+      {console.log(store.getGamesList)}
       <NavbarSignedIn/>
       <Calendar/>
 		</div>
