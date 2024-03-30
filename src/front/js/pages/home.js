@@ -16,7 +16,7 @@ export const Home = () => {
 		
 
 		<div>
-			{console.log(store.getGamesList)}
+			
 			<Navbar/>
 			<div className="main-content">
 				<div className="left">
