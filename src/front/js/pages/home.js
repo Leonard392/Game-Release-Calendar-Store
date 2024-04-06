@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Context } from "../store/appContext";
+import { Context } from "../store/Context";
 import { Link } from "react-router-dom";
 import { Navbar } from "../component/navbar.jsx";
 import { HomeCarousel } from "../component/carousel.jsx";
