@@ -13,23 +13,35 @@ body{
 }
 
 .navbar{
-    height: 80px;
+    height: 130px;
     justify-content: space-between;
 }
 
 .center-links{
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    
+}
+
+.center-link{
     text-decoration: none;
     margin-right: 20px;
+    color: #000026;
+    transition: all 0.3s;
+}
+
+.center-link:hover{
+    color: #00CCFF;
 }
 
 .brand-link{
     text-decoration: none;
-    margin-top: 5px;
+    margin-top: 25px;
 }
 
 .brand{
     color: #000026;
-    font-size: 33px;
+    font-size: 45px;
     font-weight: 600;
 }
 

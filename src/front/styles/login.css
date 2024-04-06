@@ -107,10 +107,6 @@
     color: #00CCFF;
 }
 
-.center-links{
-    display: none;
-}
-
 @media (width >= 450px){
     .login{
         width: 380px;

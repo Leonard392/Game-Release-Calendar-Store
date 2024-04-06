@@ -6,12 +6,22 @@ export const Navbar = () => {
 		<nav className="navbar bg-light">
 			<div className="container-fluid">
 				<Link className="brand-link" to="/">
-					<p className="brand">Ninja Station</p>
+					<h1 className="brand">Ninja Station</h1>
 				</Link>
 
-				<div>
-					<a className="center-links" href="#features">Features</a>
-					<a className="center-links" href="#footer">About Us</a>
+				<div className="center-links">
+					<Link className="center-link" to="/">
+						<h4>HOME</h4>
+					</Link>
+					<Link className="center-link" to="/">
+						<h4>CREATORS</h4>
+					</Link>
+					<Link className="center-link" to="/">
+						<h4>STORES</h4>
+					</Link>
+					<Link className="center-link" to="/games">
+						<h4>GAMES</h4>
+					</Link>
 				</div>
 
 
