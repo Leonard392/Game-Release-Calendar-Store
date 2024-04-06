@@ -1,6 +1,6 @@
 import React from "react";
 
-const GameCard = ({ game }) => {
+export const GameCard = ({ game }) => {
   return (
     <div className="card mb-3">
       <div className="row no-gutters">
@@ -20,5 +20,3 @@ const GameCard = ({ game }) => {
     </div>
   );
 };
-
-export default GameCard;

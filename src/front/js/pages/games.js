@@ -1,29 +1,53 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/Context";
+import { Link } from "react-router-dom";
 import { Navbar } from "../component/navbar.jsx";
 import GameCard from "../component/gameCard.jsx";
+import { Action } from "../component/genres/action.js";
 import "../../styles/games.css";
 
 export const Games = () => {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
-    actions.fetchGamesForYear(); // Fetch games when component mounts
+    actions.fetchBestGames2024(); // Fetch games when component mounts
   }, []);
 
   return (
     <div className="games-body">
         <Navbar/>
-        <div className="games-list">
-            <h1>Games of 2023</h1>
-            <div className="row">
-                {store.getGamesList.map(game => (
-                <div className="col-lg-3 col-md-4 col-sm-2" key={game.id}>
-                    <GameCard game={game} />
-                </div>
-                ))}
-            </div>
+        <div className="row">
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light side col-lg-2 col-md-1 col-sm-1">
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <Link to="/">
+                <p>ACTION</p>
+              </Link>
+            </li>
+            <li>
+              <a href="#" class="nav-link link-dark">
+              Dashboard
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link link-dark">
+              Orders
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link link-dark">
+              Products
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link link-dark">
+              Customers
+              </a>
+            </li>
+          </ul>
         </div>
+      <Action/>
+      </div>
     </div>
   );
 };

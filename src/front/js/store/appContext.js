@@ -18,7 +18,24 @@ const injectContext = PassedComponent => {
 
 		useEffect(() => {
 			// Fetch games when component mounts
-			state.actions.fetchGamesForYear();
+			state.actions.fetchBestGames2024();
+			state.actions.fetchBestGames2023();
+			state.actions.fetchBestClassics();
+			state.actions.fetchBestOfAllTimes();
+			state.actions.fetchUpcomingReleases();
+			state.actions.fetchActionGames();
+			state.actions.fetchIndieGames();
+			state.actions.fetchAdventureGames();
+			state.actions.fetchRpgGames();
+			state.actions.fetchStrategyGames();
+			state.actions.fetchShooterGames();
+			state.actions.fetchCasualGames();
+			state.actions.fetchSimulationGames();
+			state.actions.fetchPuzzleGames();
+			state.actions.fetchArcadeGames();
+			state.actions.fetchRacingGames();
+			state.actions.fetchSportsGames();
+			state.actions.fetchFightingGames();
 		}, []);
 
 		return (
