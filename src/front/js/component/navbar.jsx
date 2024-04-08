@@ -10,14 +10,14 @@ export const Navbar = () => {
 				</Link>
 
 				<div className="center-links">
-					<Link className="center-link" to="/">
-						<h4>HOME</h4>
+					<Link className="center-link" to="/platforms">
+						<h4>PLATFORMS</h4>
 					</Link>
 					<Link className="center-link" to="/creators">
 						<h4>CREATORS</h4>
 					</Link>
-					<Link className="center-link" to="/platforms">
-						<h4>PLATFORMS</h4>
+					<Link className="center-link" to="/stores">
+						<h4>STORES</h4>
 					</Link>
 					<Link className="center-link" to="/genres/action">
 						<h4>GAMES</h4>
