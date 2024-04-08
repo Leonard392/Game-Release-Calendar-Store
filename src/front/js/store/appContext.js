@@ -26,7 +26,6 @@ const injectContext = PassedComponent => {
 			state.actions.fetchActionGames();
 			state.actions.fetchIndieGames();
 			state.actions.fetchAdventureGames();
-			state.actions.fetchRpgGames();
 			state.actions.fetchStrategyGames();
 			state.actions.fetchShooterGames();
 			state.actions.fetchCasualGames();

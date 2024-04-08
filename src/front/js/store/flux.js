@@ -12,7 +12,6 @@ export const getState = ({ getStore, getActions, setStore }) => {
 		actionGames: [],
       	indieGames: [],
       	adventureGames: [],
-      	rpgGames: [],
       	strategyGames: [],
       	shooterGames: [],
       	casualGames: [],
@@ -108,16 +107,6 @@ export const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(`https://api.rawg.io/api/games?genres=adventure&page_size=${PAGE_SIZE}&key=${KEY_API}`);
 				const data = await response.json();
 				setStore({ adventureGames: data.results });
-			  } catch (error) {
-				console.error('Error fetching action games', error);
-			  }
-		  },
-		  fetchRpgGames: async () => {
-			// Fetch RPG games
-			try {
-				const response = await fetch(`https://api.rawg.io/api/games?genres=rpg&page_size=${PAGE_SIZE}&key=${KEY_API}`);
-				const data = await response.json();
-				setStore({ rpgGames: data.results });
 			  } catch (error) {
 				console.error('Error fetching action games', error);
 			  }

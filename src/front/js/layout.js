@@ -4,13 +4,27 @@ import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
 import { Home } from "./pages/home";
-import { Games } from "./pages/games.js";
+
 import { Main } from "./pages/main";
 import { Login } from "./pages/login";
 import { Signup } from "./pages/signup";
 import { Profile } from "./pages/profile.js";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
+
+//import genres view
+import { Action } from "./pages/genres/action.js";
+import { Adventure} from "./pages/genres/adventure.js"
+import { Arcade } from "./pages/genres/arcade.js";
+import { Casual } from "./pages/genres/casual.js";
+import { Fighting } from "./pages/genres/fighting.js";
+import { Puzzle } from "./pages/genres/puzzle.js";
+import { Indie } from "./pages/genres/indie.js";
+import { Racing } from "./pages/genres/racing.js";
+import { Shooter } from "./pages/genres/shooter.js";
+import { Simulation } from "./pages/genres/simulation.js";
+import { Sports } from "./pages/genres/sports.js";
+import { Strategy } from "./pages/genres/strategy.js";
 
 import { Footer } from "./component/footer.jsx";
 
@@ -28,7 +42,18 @@ const Layout = () => {
                 <ScrollToTop>
                     <Routes>
                         <Route element={<Home />} path="/" />
-                        <Route element={<Games />} path="/games" />
+                        <Route element={<Action />} path="/genres/action" />
+                        <Route element={<Adventure />} path="/genres/adventure" />
+                        <Route element={<Arcade />} path="/genres/arcade" />
+                        <Route element={<Casual />} path="/genres/casual" />
+                        <Route element={<Fighting />} path="/genres/fighting" />
+                        <Route element={<Indie />} path="/genres/indie" />
+                        <Route element={<Puzzle />} path="/genres/puzzle" />
+                        <Route element={<Racing />} path="/genres/racing" />
+                        <Route element={<Shooter />} path="/genres/shooter" />
+                        <Route element={<Simulation />} path="/genres/simulation" />
+                        <Route element={<Sports />} path="/genres/sports" />
+                        <Route element={<Strategy />} path="/genres/strategy" />
                         <Route element={<Main />} path="/main" />
                         <Route element={<Login />} path="/login" />
                         <Route element={<Signup />} path="/signup" />

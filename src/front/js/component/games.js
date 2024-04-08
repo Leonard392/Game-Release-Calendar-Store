@@ -1,17 +1,13 @@
 import React, { useContext, useEffect } from "react";
-import { Context } from "../store/Context";
+import { Context } from "../store/Context.js";
 import { Link } from "react-router-dom";
-import { Navbar } from "../component/navbar.jsx";
-import GameCard from "../component/gameCard.jsx";
-import { Action } from "../component/genres/action.js";
+import { Navbar } from "./navbar.jsx";
+import GameCard from "./gameCard.jsx";
+import { Action } from "../pages/genres/action.js";
 import "../../styles/games.css";
 
 export const Games = () => {
   const { store, actions } = useContext(Context);
-
-  useEffect(() => {
-    actions.fetchBestGames2024(); // Fetch games when component mounts
-  }, []);
 
   return (
     <div className="games-body">
