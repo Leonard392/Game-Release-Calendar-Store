@@ -36,6 +36,7 @@ const injectContext = PassedComponent => {
 			state.actions.fetchSportsGames();
 			state.actions.fetchFightingGames();
 			state.actions.fetchTopCreators();
+			state.actions.fetchPlatforms();
 		}, []);
 
 		return (
