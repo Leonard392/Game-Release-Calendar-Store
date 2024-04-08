@@ -20,7 +20,8 @@ export const getState = ({ getStore, getActions, setStore }) => {
       	arcadeGames: [],
       	racingGames: [],
       	sportsGames: [],
-      	fightingGames: []
+      	fightingGames: [],
+		topCreators: []
 	  },
 	  actions: {
 		fetchBestGames2024: async () => {
@@ -201,8 +202,18 @@ export const getState = ({ getStore, getActions, setStore }) => {
 			  } catch (error) {
 				console.error('Error fetching action games', error);
 			  }
-		  }
-	  }
+		  },
+		  fetchTopCreators: async () => {
+			try {
+			  // Fetch top creators from the API
+			  const response = await fetch(`https://api.rawg.io/api/creators?key=${KEY_API}&page_size=${PAGE_SIZE}`);
+			  const data = await response.json();
+			  setStore({ topCreators: data.results });
+			} catch (error) {
+			  console.error('Error fetching top creators', error);
+			}
+	  	  }
+		}
 	};
   };
   

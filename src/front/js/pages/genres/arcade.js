@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../../store/Context.js";
-import { GameCard } from "../../component/gameCard.jsx"
+import { GameCard } from "../../component/cards/gameCard.jsx"
 import { Navbar } from "../../component/navbar.jsx";
 import { Sidebar } from "../../component/sidebar.jsx";
 import "../../../styles/genres.css";
