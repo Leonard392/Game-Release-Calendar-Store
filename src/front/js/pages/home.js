@@ -2,9 +2,8 @@ import React, { useContext } from "react";
 import { Context } from "../store/Context";
 import { Link } from "react-router-dom";
 import { Navbar } from "../component/navbar.jsx";
-import { HomeCarousel } from "../component/carousel.jsx";
+import { TopGames } from "../component/topGames.jsx";
 import { Features } from "../component/features.jsx";
-import logoImageUrl from "../../img/logo.png";
 import logo3 from "../../img/5.webp";
 import "../../styles/home.css";
 
@@ -12,8 +11,6 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-
-		
 
 		<div>
 			
@@ -28,7 +25,7 @@ export const Home = () => {
 				</div>
 				<img className="logo-img" src={logo3}/>
 			</div>
-			<HomeCarousel/>
+			<TopGames/>
 			<Features/>
 		</div>
 	);
