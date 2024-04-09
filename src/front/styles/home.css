@@ -121,26 +121,6 @@ body{
     background-color: #00CCFF
 }
 
-.features{
-    background-color: #00CCFF;
-    display: flex;
-    text-align: center;
-    padding-top: 40px;
-}
-
-.features-title{
-    font-size: 70px;
-}
-
-.features-description{
-    font-size: 20px;
-}
-
-.myCarousel{
-    background-color: #00CCFF;
-    align-items: center;
-}
-
 .example-left{
     width: 700px;
 }
@@ -154,3 +134,58 @@ body{
     padding-right: 0px;
 }
 
+.games-2024{
+    margin-top: 50px;
+}
+
+.best2024GamesTittle{
+    font-size: 60px;
+    font-weight: 800;
+}
+
+/* I need to fix this styles "FEATURES"*/
+
+.features {
+    background-color: #00CCFF;
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .features-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .features-description {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+  }
+  
+  .cards {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .feature-card {
+    background-color: #f8f9fa;
+    border: 1px solid #000026;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0 10px;
+    width: 250px;
+  }
+  
+  .feat-name {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .feat-icon {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .feat-description {
+    font-size: 1.1rem;
+  }
