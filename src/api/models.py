@@ -7,6 +7,13 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    
+    # Relationship with favorite games
+    favorite_games = db.relationship('FavoriteGame', backref='user', lazy=True)
+    # Relationship with favorite creators
+    favorite_creators = db.relationship('FavoriteCreator', backref='user', lazy=True)
+    # Relationship with favorite store
+    favorite_store = db.relationship('FavoriteStore', backref='user', lazy=True)
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -17,3 +24,18 @@ class User(db.Model):
             "email": self.email,
             # do not serialize the password, its a security breach
         }
+
+class FavoriteGame(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+class FavoriteCreator(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+class FavoriteStore(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
