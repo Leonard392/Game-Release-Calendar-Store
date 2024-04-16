@@ -1,40 +1,44 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Context } from "../../store/Context";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-export const CreatorDetails = ({ creatorId }) => {
-    const { store, actions } = useContext(Context);
+
+export const CreatorDetails = ({ gameId }) => {
+    const params = useParams()
+    const KEY_API = "36254294ed4b46ffbb02d560b2558d65";
     const [creatorDetails, setCreatorDetails] = useState(null);
 
-    useEffect(() => {
-        // Fetch creator details when component mounts
-        if (creatorId) {
-            actions.fetchCreatorDetails(creatorId);
-        }
-    }, [creatorId, actions]);
+    let url = 'https://api.rawg.io/api/creators/' + params.id + "?key=" + KEY_API; 
 
     useEffect(() => {
-        // Set creator details from store when it updates
-        if (store.creatorDetails) {
-            setCreatorDetails(store.creatorDetails);
-        }
-    }, [store.creatorDetails]);
+        fetch(url)
+            .then(response => response.json())
+            .then(data => setCreatorDetails(data))
+            .catch(err => err)
+    }, []);
 
-    if (!creatorDetails) {
-        return <div>Loading...</div>; // Render loading indicator while fetching data
-    }
+    const backgroundStyle = {
+        backgroundImage: creatorDetails ? `url(${creatorDetails.image_background})` : 'none',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: 'white',
+        textAlign: 'center',
+    };
 
     return (
-        <div className="creator-details">
-            <h2>{creatorDetails.name}</h2>
-            <p>Games Count: {creatorDetails.gamesCount}</p>
-            <p>Rating: {creatorDetails.rating}</p>
-            <p>Games Created:</p>
-            <ul>
-                {creatorDetails.games.map((game) => (
-                    <li key={game.id}>{game.title}</li>
-                ))}
-            </ul>
-            {/* Add favorite button and other details as needed */}
+        <div style={backgroundStyle}>
+            {creatorDetails ? (
+                <div>
+                    <h2>{creatorDetails.name}</h2>
+                    <p>{creatorDetails.description}</p>
+                    {/* Render more details as needed */}
+                </div>
+            ) : (
+                <p>Loading game details...</p>
+            )}
         </div>
     );
 };

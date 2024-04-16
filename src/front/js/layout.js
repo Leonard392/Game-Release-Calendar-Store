@@ -30,6 +30,7 @@ import { Strategy } from "./pages/genres/strategy.js";
 
 //import details
 import { GameDetails } from "./component/details/gameDetails.jsx"; 
+import { CreatorDetails } from "./component/details/creatorDetails.jsx";
 
 import { Footer } from "./component/footer.jsx";
 
@@ -67,6 +68,7 @@ const Layout = () => {
                         <Route element={<Signup />} path="/signup" />
                         <Route element={<Profile />} path="/profile" />
                         <Route element={<GameDetails />} path="/gameDetails/:id" />
+                        <Route element={<CreatorDetails />} path="/creatorDetails/:id" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
