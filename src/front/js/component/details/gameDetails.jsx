@@ -7,7 +7,7 @@ export const GameDetails = ({ gameId }) => {
     const KEY_API = "36254294ed4b46ffbb02d560b2558d65";
     const [gameDetails, setGameDetails] = useState(null);
 
-    let url = 'https://api.rawg.io/api/games/1?key=36254294ed4b46ffbb02d560b2558d65';
+    let url = 'https://api.rawg.io/api/games/' + params.id + "?key=" + KEY_API; 
 
     useEffect(() => {
         fetch(url)
