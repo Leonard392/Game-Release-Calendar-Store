@@ -17,7 +17,6 @@ export const Signup = () => {
 			<form className="login-form">
 				<input type="text" placeholder="Enter your user"/>
 				<input type="password" placeholder="Enter your passcode"/>
-                <input type="password" placeholder="Repeat your passcode"/>
 				<button type="submit">SIGN UP</button>
 			</form>
 		</div>
