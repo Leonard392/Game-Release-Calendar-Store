@@ -1,4 +1,5 @@
 import React , { useContext } from "react";
+import { Link } from "react-router-dom";
 
 export const StoreCard = ({ store }) => {
     return (
@@ -7,6 +8,9 @@ export const StoreCard = ({ store }) => {
         <div className="card-body">
           <h5 className="card-title">{store.name}</h5>
           <p className="card-text">Popular Items: {store.games_count}</p>
+          <Link to={"/storeDetails/" + store.id}>
+              <button type="button" className="btn btn-outline mt-3 me-2 learnMoreBtn">See more! </button>
+          </Link>
           <button className="btn btn-primary">
           Favorite
           </button>
