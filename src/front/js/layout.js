@@ -28,6 +28,9 @@ import { Simulation } from "./pages/genres/simulation.js";
 import { Sports } from "./pages/genres/sports.js";
 import { Strategy } from "./pages/genres/strategy.js";
 
+//import details
+import { GameDetails } from "./component/details/gameDetails.jsx"; 
+
 import { Footer } from "./component/footer.jsx";
 
 //create your first component
@@ -63,7 +66,7 @@ const Layout = () => {
                         <Route element={<Login />} path="/login" />
                         <Route element={<Signup />} path="/signup" />
                         <Route element={<Profile />} path="/profile" />
-                        <Route element={<Single />} path="/single/:theid" />
+                        <Route element={<GameDetails />} path="/GamesDetails/:id" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
