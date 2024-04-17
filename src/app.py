@@ -11,6 +11,7 @@ from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 
 # from models import Person
 
@@ -22,6 +23,7 @@ app.url_map.strict_slashes = False
 
 app.config["JWT_SECRET_KEY"] = "1e2jond1nd3indop13nd01ndi3p"  # Change this!
 jwt = JWTManager(app)
+CORS(app)
 
 # database condiguration
 db_url = os.getenv("DATABASE_URL")
