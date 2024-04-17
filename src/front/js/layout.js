@@ -7,7 +7,6 @@ import { Home } from "./pages/home";
 import { Creators } from "./pages/navbar/creators.js";
 import { Platforms } from "./pages/navbar/platforms.js";
 import { Stores } from "./pages/navbar/stores.js";
-import { Main } from "./pages/main";
 import { Login } from "./pages/login";
 import { Signup } from "./pages/signup";
 import { Profile } from "./pages/profile.js";
@@ -68,7 +67,6 @@ const Layout = () => {
                         <Route element={<Simulation />} path="/genres/simulation" />
                         <Route element={<Sports />} path="/genres/sports" />
                         <Route element={<Strategy />} path="/genres/strategy" />
-                        <Route element={<Main />} path="/main" />
                         <Route element={<Login />} path="/login" />
                         <Route element={<Signup />} path="/signup" />
                         <Route element={<Profile />} path="/profile" />
