@@ -2,10 +2,11 @@ import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export const Sidebar = () => {
+
     return(
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-light side col-lg-2 col-md-1 col-sm-1">
           <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item">
+          <li class="nav-item">
               <Link to="/genres/action">
                 <p>ACTION</p>
               </Link>
@@ -69,3 +70,17 @@ export const Sidebar = () => {
     </div>
     )
 }
+
+
+
+const GenreComponent = () => {
+  
+
+  return (
+    <div>
+      
+    </div>
+  );
+};
+
+export default GenreComponent;

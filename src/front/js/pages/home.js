@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/Context";
 import { Link } from "react-router-dom";
 import { Navbar } from "../component/navbar.jsx";
@@ -9,6 +9,10 @@ import "../../styles/home.css";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
+
+	useEffect(() => {
+		if(store.token && store.token !="" && store.token != undefined) actions.getMessage()
+	}, [store.token]);
 
 	return (
 
