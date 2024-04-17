@@ -18,13 +18,13 @@
 }
 
 .left{
-    width: 700px;
+    width: 60%;
     background-color: #000026;
     padding: 0 80px;
 }
 
 .logo-img{
-    width: 650px;
+    width: 40%;
 }
 
 .left h1{
