@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/Context";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import { Navbar } from "../component/navbar.jsx";
 import ProfilePic from "../../img/profile.png";
 import "../../styles/login.css";
 
@@ -24,7 +23,6 @@ export const Signup = () => {
 
     return (
         <div>
-            <Navbar />
             <div className="login-body">
                 <div className="login">
                     <img src={ProfilePic} />

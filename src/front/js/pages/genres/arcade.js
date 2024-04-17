@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../store/Context.js";
 import { GameCard } from "../../component/cards/gameCard.jsx"
-import { Navbar } from "../../component/navbar.jsx";
 import { Sidebar } from "../../component/sidebar.jsx";
 import "../../../styles/genres.css";
 
@@ -22,7 +21,6 @@ export const Arcade = () => {
 
     return (
         <div className="games-body">
-            <Navbar/>
             <div className="row">
                 <Sidebar/>
                 <div className="games-list col-lg-9 col-md-8 col-sm-1">

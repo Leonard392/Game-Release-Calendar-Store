@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../../store/Context.js";
-import { Navbar } from "../../component/navbar.jsx";
 import { Platformcard } from "../../component/cards/platformCard.jsx";
 
 export const Platforms = () => {
@@ -8,7 +7,6 @@ export const Platforms = () => {
 
   return (
         <div className="games-body">
-            <Navbar/>
             <div className="main-component">
                 <h1>Platforms</h1>
                 <div className="row">

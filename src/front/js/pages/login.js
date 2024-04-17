@@ -1,14 +1,12 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import { Navbar } from "../component/navbar.jsx";
 import ProfilePic from "../../img/profile.png";
 import "../../styles/login.css";
 
 export const Login = () => {
 	return (
 		<div>
-		<Navbar/>
 		<div className="login-body">
 		<div className="login">
 			<img src={ProfilePic} />
