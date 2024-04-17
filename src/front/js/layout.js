@@ -34,6 +34,8 @@ import { CreatorDetails } from "./component/details/creatorDetails.jsx";
 import { StoreDetails } from "./component/details/storeDetails.jsx";
 import { PlatformDetails } from "./component/details/platformDetails.jsx";
 
+
+import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
 
 //create your first component
@@ -48,6 +50,7 @@ const Layout = () => {
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
+                    <Navbar/>
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Creators />} path="/creators" />

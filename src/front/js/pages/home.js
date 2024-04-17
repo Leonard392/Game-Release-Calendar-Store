@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/Context";
 import { Link } from "react-router-dom";
-import { Navbar } from "../component/navbar.jsx";
 import { TopGames } from "../component/topGames.jsx";
 import { Features } from "../component/features.jsx";
 import logo3 from "../../img/5.webp";
@@ -14,7 +13,6 @@ export const Home = () => {
 
 		<div>
 			
-			<Navbar/>
 			<div className="main-content">
 				<div className="left">
 					<h1>Let's Get Some <span>Video Games</span></h1>
