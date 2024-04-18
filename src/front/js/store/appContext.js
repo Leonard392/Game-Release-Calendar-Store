@@ -17,7 +17,6 @@ const injectContext = PassedComponent => {
 		);
 
 		useEffect(() => {
-			state.actions.syncTokenFromSessionStore();
 			// Fetch games when component mounts
 			state.actions.fetchBestGames2024();
 			state.actions.fetchBestGames2023();

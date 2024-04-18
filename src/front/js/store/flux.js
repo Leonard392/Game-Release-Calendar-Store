@@ -1,10 +1,9 @@
 export const getState = ({ getStore, getActions, setStore }) => {
-	const KEY_API = "36254294ed4b46ffbb02d560b2558d65";
+	const KEY_API = "aad0faa37dc14df0a15a03054d710a08";
 	const PAGE_SIZE = 20; // Number of games per page
   
 	return {
 	  store: {
-		token: null,
 		bestGames2024: [],
 		bestGames2023: [],
 		bestClassics: [],
@@ -27,39 +26,6 @@ export const getState = ({ getStore, getActions, setStore }) => {
 		Stores: []
 	  },
 	  actions: {
-		syncTokenFromSessionStore: () => {
-			const token = sessionStorage.getItem("token");
-			console.log("Application is loaded synching the session storage token.")
-			if (token && token != "" && token!= undefined ) setStore({ token: token});
-		},
-		signup: async (email, password) =>{
-			const opts = {
-				method: 'POST',
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify({
-					"email": email,
-					"password": password
-				})
-			};
-			try{
-				const resp = await fetch('https://automatic-halibut-9r9wwvqrvwx2x6r-3001.app.github.dev/api/token', opts)
-				if(resp.status !== 200){
-				alert("There has been an error.");
-				return false
-			}
-			
-			const data = await resp.json();
-			console.log("this came from the backend", data);
-			sessionStorage.setItem("token", data.access_token);
-			setStore({token: data.access_token})
-			return true
-			}
-		catch(error){
-			console.log("there has been an error", error)
-		}
-		},
 		fetchBestGames2024: async () => {
 		  try {
 			// Fetch best games of 2024 from the API
