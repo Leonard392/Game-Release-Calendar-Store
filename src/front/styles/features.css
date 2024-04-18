@@ -1,0 +1,48 @@
+.features {
+    width: 100%;
+    background-color: #00CCFF;
+    text-align: center;
+    padding: 50px;
+    }
+    
+.features-title {
+    font-size: 60px;
+    font-weight: 800;
+    margin-top: 50px;
+}
+    
+.general-description {
+    font-size: 1.8rem;
+    margin-top: 40px;
+}
+    
+.cards {
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-around;
+}
+    
+.feature-card {
+    padding: 20px;
+    margin: 0 10px;
+    width: 350px;
+}
+    
+.feat-name {
+    font-size:2rem;
+    margin-bottom: 30px;
+}
+
+.feat-icon{
+    margin-bottom: 30px;
+    transition: all 0.3s;
+}
+
+.feat-icon:hover{
+    color: #fff;
+}
+  
+    
+.feat-description {
+    font-size: 1.1rem;
+}
