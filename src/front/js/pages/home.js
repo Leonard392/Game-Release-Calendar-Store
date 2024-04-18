@@ -21,7 +21,9 @@ export const Home = () => {
 						<button className="left-btn">BUY NOW</button>
 					</Link>
 				</div>
-				<img className="logo-img" src={logo3}/>
+				<div className="right">
+					<img  className="logo-img" src={logo3}/>
+				</div>
 			</div>
 			<TopGames/>
 			<Features/>
