@@ -40,10 +40,10 @@ export const Navbar = () => {
                     </li>
                 </ul>
                 <Link to="/signup">
-                    <button className="action_btn">Get Started</button>
+                    <button className="action_btn signup-btn">Get Started</button>
                 </Link>
                 <Link to="/login">
-                    <button className="action_btn">Log In</button>
+                    <button className="action_btn login-btn">Log In</button>
                 </Link>
                 <div className="toggle_btn" onClick={handleClick}>
                     <i className={`fa-solid ${isOpen ? "fa-xmark" : "fa-bars"}`}></i>
@@ -74,12 +74,12 @@ export const Navbar = () => {
                     </li>
                     <li>
                         <Link to="/signup" className="naV-btn">
-                            <button className="action_btn">Get Started</button>
+                            <button className="action_btn signup-btn">Get Started</button>
                         </Link>
                     </li>
                     <li>
                         <Link to="/login" className="naV-btn">
-                            <button className="action_btn">Log In</button>
+                            <button className="action_btn login-btn">Log In</button>
                         </Link>
                     </li>
                 </ul>

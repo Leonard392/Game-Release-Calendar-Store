@@ -16,17 +16,28 @@ li{
 .navBar{
     width: 100%;
     height: 160px;
-    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
+ul{
+    margin-bottom: 0;
+}
+
+.logo{
+    padding-left: 20px;
+}
+
 .link-logo{
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
+    color: #000026;
+}
+
+.link-logo:hover{
     color: #000026;
 }
 
@@ -43,15 +54,35 @@ li{
 }
 
 .action_btn{
-    background-color: #00CCFF;
-    color: #fff;
-    padding: 0.5rem 1rem;
+    padding: 8px 14px;
     border: none;
-    outline: none;
-    border-radius: 20px;
+    border-radius: 4px;
     font-size: 0.8rem;
     font-weight: bold;
     cursor: pointer;
+    transition: all 0.3s;
+}
+
+.login-btn{
+    color: #000026;
+    background-color: transparent;
+    margin-right: 80px;
+    border: 1px solid #000026;
+}
+
+.login-btn:hover{
+    background-color:#000026;
+    color: #00CCFF;
+}
+
+.signup-btn{
+    background-color:#000026;
+    color: white;
+    margin-left: 80px;
+}
+
+.signup-btn:hover{
+    background-color: #00CCFF;
 }
 
 /*DROPDOWN MENU*/
@@ -74,6 +105,9 @@ li{
     height: 350px;
 }
 
+.Dropdown_menu ul{
+    padding: 0;
+}
 
 .Dropdown_menu li{
     padding: 0.7rem;
@@ -90,6 +124,26 @@ li{
     text-decoration: none;
 }
 
+.Dropdown_menu .login-btn{
+    color: #00CCFF;
+}
+
+.Dropdown_menu .login-btn:hover{
+    background-color: #00CCFF;
+    color: white;
+    border: none;
+}
+
+@media(max-width: 1185px){
+    .login-btn{
+        margin-right: 0;
+    }
+
+    .signup-btn{
+        margin-left: 0;
+    }
+}
+
 @media(max-width: 1111px){
     .navBar .naV-link,
     .navBar .action_btn{
@@ -98,9 +152,11 @@ li{
 
     .navBar .toggle_btn{
         display: block;
+        margin-right: 20px;
     }
 
     .Dropdown_menu{
         display: block;
+        margin-right: 20px;
     }
 }
