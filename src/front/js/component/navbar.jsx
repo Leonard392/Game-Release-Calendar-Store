@@ -42,7 +42,7 @@ export const Navbar = () => {
                     </li>
                 </ul>
                 {!store.token ? (
-                    <div>
+                    <div className="login-signup">
                         <Link to="/signup">
                             <button className="action_btn signup-btn">Get Started</button>
                         </Link>
@@ -84,11 +84,11 @@ export const Navbar = () => {
                         </Link>
                     </li>
                     {!store.token ? (
-                    <div>
-                        <Link to="/signup">
+                    <div className="signup-login">
+                        <Link to="/signup" className="signup-login-link">
                             <button className="action_btn signup-btn">Get Started</button>
                         </Link>
-                        <Link to="/login">
+                        <Link to="/login" className="signup-login-link">
                             <button className="action_btn login-btn">Log In</button>
                         </Link>
                     </div>

@@ -25,11 +25,11 @@
 .feature-card {
     padding: 20px;
     margin: 0 10px;
-    width: 350px;
+    width: 300px;
 }
     
 .feat-name {
-    font-size:2rem;
+    font-size:1.6rem;
     margin-bottom: 30px;
 }
 

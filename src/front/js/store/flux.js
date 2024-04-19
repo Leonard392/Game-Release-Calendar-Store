@@ -32,37 +32,37 @@ export const getState = ({ getStore, getActions, setStore }) => {
 	  actions: {
 		//Fetchs From my API
 		
-			signUp: async (username, password) => {
-				try {
-					const response = await fetch('https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/signup', {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json'
-						},
-						body: JSON.stringify({ username, password })
-					});
-		
-					if (!response.ok) {
-						throw new Error('Failed to sign up');
-					}
-		
-					const data = await response.json();
-					// Puedes hacer algo con la respuesta si es necesario
-					console.log("this came from the backend", data);
-					setStore({token: data.access_token})
-					console.log(getStore().token);
-					setError(null);
-				} catch (error) {
-					console.error('Error signing up:', error);
-					setError(error.message);
-					throw error; // Importante relanzar el error para manejarlo en Signup
+		signUp: async (username, password) => {
+			try {
+				const response = await fetch('https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/signup', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ username, password })
+				});
+	
+				if (!response.ok) {
+					throw new Error('Failed to sign up');
 				}
-			},
 
-			logout: () =>{
-				console.log("Logged Out");
-				setStore({ token: null});
-			},
+				const data = await response.json();
+				const currentToken = data.access_token;
+				localStorage.setItem('token', currentToken);
+				setStore({ token: currentToken });
+				setError(null);
+			} catch (error) {
+				console.error('Error signing up:', error);
+				setError(error.message);
+				throw error;
+			}
+		},
+
+		logout: () =>{
+			console.log("Logged Out");
+			localStorage.removeItem('token');
+			setStore({ token: null });
+		},
 
 
 
