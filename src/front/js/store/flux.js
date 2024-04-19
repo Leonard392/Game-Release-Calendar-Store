@@ -59,7 +59,10 @@ export const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-
+			logout: () =>{
+				console.log("Logged Out");
+				setStore({ token: null});
+			},
 
 
 

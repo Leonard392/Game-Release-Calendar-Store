@@ -1,8 +1,10 @@
-import React, { useState} from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/Context";
 import "../../styles/navbar.css"
 
 export const Navbar = () => {
+    const { store, actions } = useContext(Context);
 	const [isOpen, setIsOpen] = useState(false);
 
     const handleClick = () => {
@@ -39,12 +41,21 @@ export const Navbar = () => {
                         </Link>
                     </li>
                 </ul>
-                <Link to="/signup">
-                    <button className="action_btn signup-btn">Get Started</button>
-                </Link>
-                <Link to="/login">
-                    <button className="action_btn login-btn">Log In</button>
-                </Link>
+                {!store.token ? (
+                    <div>
+                        <Link to="/signup">
+                            <button className="action_btn signup-btn">Get Started</button>
+                        </Link>
+                        <Link to="/login">
+                            <button className="action_btn login-btn">Log In</button>
+                        </Link>
+                    </div>
+                ) : (
+                    <Link to="/"> {/* Cambiado a '/logout' para enlazar a la página de cierre de sesión */}
+                        <button onClick={ () => actions.logout()} className="action_btn login-btn">Logout</button>
+                    </Link>
+                )}
+                
                 <div className="toggle_btn" onClick={handleClick}>
                     <i className={`fa-solid ${isOpen ? "fa-xmark" : "fa-bars"}`}></i>
                 </div>
@@ -72,16 +83,20 @@ export const Navbar = () => {
                             <h4>GAMES</h4>
                         </Link>
                     </li>
-                    <li>
-                        <Link to="/signup" className="naV-btn">
+                    {!store.token ? (
+                    <div>
+                        <Link to="/signup">
                             <button className="action_btn signup-btn">Get Started</button>
                         </Link>
-                    </li>
-                    <li>
-                        <Link to="/login" className="naV-btn">
+                        <Link to="/login">
                             <button className="action_btn login-btn">Log In</button>
                         </Link>
-                    </li>
+                    </div>
+                    ) : (
+                    <Link to="/"> {/* Cambiado a '/logout' para enlazar a la página de cierre de sesión */}
+                        <button onClick={ () => actions.logout()} className="action_btn login-btn">Logout</button>
+                    </Link>
+                    )}
                 </ul>
             </div>
         </header>
