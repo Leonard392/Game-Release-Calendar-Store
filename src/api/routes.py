@@ -50,8 +50,13 @@ def sign_up():
     new_user = User(username=username, password=hashed_password, is_active=True)
     db.session.add(new_user)
     db.session.commit()
+
+    access_token = create_access_token(identity=new_user.id)
     
-    return jsonify({"message": "User created successfully"}), 201
+    return jsonify({
+    "message": "User created successfully",
+    "access_token": access_token
+    }), 201
 
 @api.route('/login', methods=['POST'])
 def login():

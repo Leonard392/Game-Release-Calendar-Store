@@ -1,9 +1,13 @@
+import { useState } from "react";
+
 export const getState = ({ getStore, getActions, setStore }) => {
 	const KEY_API = "aad0faa37dc14df0a15a03054d710a08";
 	const PAGE_SIZE = 20; // Number of games per page
+	const [error, setError] = useState(null);
   
 	return {
 	  store: {
+		token: null,
 		bestGames2024: [],
 		bestGames2023: [],
 		bestClassics: [],
@@ -26,6 +30,41 @@ export const getState = ({ getStore, getActions, setStore }) => {
 		Stores: []
 	  },
 	  actions: {
+		//Fetchs From my API
+		
+			signUp: async (username, password) => {
+				try {
+					const response = await fetch('https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/signup', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({ username, password })
+					});
+		
+					if (!response.ok) {
+						throw new Error('Failed to sign up');
+					}
+		
+					const data = await response.json();
+					// Puedes hacer algo con la respuesta si es necesario
+					console.log("this came from the backend", data);
+					setStore({token: data.access_token})
+					console.log(getStore().token);
+					setError(null);
+				} catch (error) {
+					console.error('Error signing up:', error);
+					setError(error.message);
+					throw error; // Importante relanzar el error para manejarlo en Signup
+				}
+			},
+
+
+
+
+
+
+		//Fetchs from Rawg.io API
 		fetchBestGames2024: async () => {
 		  try {
 			// Fetch best games of 2024 from the API
