@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 export const CreatorDetails = ({ gameId }) => {
     const params = useParams()
-    const KEY_API = "36254294ed4b46ffbb02d560b2558d65";
+    const KEY_API = "35e73496eb2c49af83d0f3f7074b875e";
     const [creatorDetails, setCreatorDetails] = useState(null);
 
     let url = 'https://api.rawg.io/api/creators/' + params.id + "?key=" + KEY_API; 

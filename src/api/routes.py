@@ -85,25 +85,30 @@ def logout():
 @api.route('/favorites', methods=['POST'])
 @jwt_required()
 def add_to_favorites():
-    user_id = get_jwt_identity()
-    data = request.json
-    game_id = data.get('game_id')  # Suponiendo que envías el ID del juego en el cuerpo de la solicitud
-    
-    if not game_id:
-        return jsonify({"message": "Game ID is required"}), 400
-    
-    user = User.query.get(user_id)
-    
-    # Verificar si el juego ya está en la lista de favoritos del usuario
-    if FavoriteGame.query.filter_by(user_id=user_id, game_id=game_id).first():
-        return jsonify({"message": "Game already in favorites"}), 400
-    
-    # Agregar el juego a la lista de favoritos del usuario
-    new_favorite = FavoriteGame(user_id=user_id, game_id=game_id)
-    db.session.add(new_favorite)
-    db.session.commit()
-    
-    return jsonify({"message": "Game added to favorites successfully"}), 201
+    try:
+        user_id = get_jwt_identity()
+        data = request.json
+        game_id = data.get('game_id')
+        
+        if not game_id:
+            return jsonify({"message": "Game ID is required"}), 400
+        
+        user = User.query.get(user_id)
+        if not user:
+            return jsonify({"message": "User not found"}), 404
+        
+        # Verificar si el juego ya está en la lista de favoritos del usuario
+        if FavoriteGame.query.filter_by(user_id=user_id, game_id=game_id).first():
+            return jsonify({"message": "Game already in favorites"}), 400
+        
+        # Agregar el juego a la lista de favoritos del usuario
+        new_favorite = FavoriteGame(user_id=user_id, game_id=game_id)
+        db.session.add(new_favorite)
+        db.session.commit()
+        
+        return jsonify({"message": "Game added to favorites successfully"}), 201
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
 
 @api.route('/favorites/<int:game_id>', methods=['DELETE'])
 @jwt_required()

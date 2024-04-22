@@ -6,8 +6,7 @@ import "../../../styles/genres.css";
 
 export const Strategy = () => {
     const { store, actions } = useContext(Context);
-
-    const KEY_API = "aad0faa37dc14df0a15a03054d710a08";
+    const KEY_API = "35e73496eb2c49af83d0f3f7074b875e";
     const [games, setGames] = useState([]);
 
     let url = `https://api.rawg.io/api/games?genres=strategy&key=${KEY_API}`;

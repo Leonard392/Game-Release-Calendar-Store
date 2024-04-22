@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export const getState = ({ getStore, getActions, setStore }) => {
-	const KEY_API = "aad0faa37dc14df0a15a03054d710a08";
+	const KEY_API = "35e73496eb2c49af83d0f3f7074b875e";
 	const PAGE_SIZE = 20; // Number of games per page
 	const [error, setError] = useState(null);
   
@@ -102,24 +102,41 @@ export const getState = ({ getStore, getActions, setStore }) => {
 
 		addToFavorites: async (gameId) => {
 			try {
-				const token = localStorage.getItem('token');
-				const response = await fetch(`https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites`, {
-					method: 'POST',
+				const response = await fetch("https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites", {
+					method: "POST",
 					headers: {
-						'Content-Type': 'application/json',
-						'Authorization': `Bearer ${token}`
+						"Content-Type": "application/json",
+						"Authorization": `Bearer ${localStorage.getItem("token")}`
 					},
-					body: JSON.stringify({ gameId })
+					body: JSON.stringify({ game_id: gameId })
+				});
+				if (!response.ok) {
+					throw new Error("Failed to add game to favorites");
+				}
+				// Handle success
+			} catch (error) {
+				console.error("Error adding game to favorites:", error);
+			}
+		},
+		
+		removeFromFavorites: async (gameId) => {
+			try {
+				const token = localStorage.getItem('token');
+				const response = await fetch(`https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites/${gameId}`, {
+					method: 'DELETE',
+					headers: {
+						'Authorization': `Bearer ${token}`
+					}
 				});
 		
 				if (!response.ok) {
-					throw new Error('Failed to add game to favorites');
+					throw new Error('Failed to remove game from favorites');
 				}
 		
-				console.log('Game added to favorites successfully');
+				console.log('Game removed from favorites successfully');
 				// Puedes hacer algo aquí, como actualizar el estado para reflejar el cambio
 			} catch (error) {
-				console.error('Error adding game to favorites:', error);
+				console.error('Error removing game from favorites:', error);
 				throw error;
 			}
 		},

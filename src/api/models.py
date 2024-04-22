@@ -28,6 +28,7 @@ class User(db.Model):
 class FavoriteGame(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    game_id = db.Column(db.Integer, nullable=False)  
 
 class FavoriteCreator(db.Model):
     id = db.Column(db.Integer, primary_key=True)
