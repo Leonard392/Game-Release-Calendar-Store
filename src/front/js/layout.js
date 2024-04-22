@@ -13,6 +13,10 @@ import { Profile } from "./pages/profile.js";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
+//user
+import { Favorites } from "./pages/user/favorites.js";
+
+
 //import genres view
 import { Action } from "./pages/genres/action.js";
 import { Adventure} from "./pages/genres/adventure.js"
@@ -69,6 +73,7 @@ const Layout = () => {
                         <Route element={<Strategy />} path="/genres/strategy" />
                         <Route element={<Login />} path="/login" />
                         <Route element={<Signup />} path="/signup" />
+                        <Route element={<Favorites />} path="/favorites" />
                         <Route element={<Profile />} path="/profile" />
                         <Route element={<GameDetails />} path="/gameDetails/:id" />
                         <Route element={<CreatorDetails />} path="/creatorDetails/:id" />

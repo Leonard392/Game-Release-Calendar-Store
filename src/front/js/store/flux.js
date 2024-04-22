@@ -9,6 +9,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 	  store: {
 		token: null,
 		error: null,
+		favorites: null,
 		bestGames2024: [],
 		bestGames2023: [],
 		bestClassics: [],
@@ -140,6 +141,31 @@ export const getState = ({ getStore, getActions, setStore }) => {
 				throw error;
 			}
 		},
+		fetchUserFavorites: async () => {
+			try {
+			  const { token } = getStore(); // Obtener el token del store
+			  if (!token) {
+				throw new Error("User not authenticated"); // Lanzar un error si el usuario no está autenticado
+			  }
+			  
+			  const response = await fetch("https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites", {
+				headers: {
+				  Authorization: `Bearer ${token}`
+				}
+			  });
+			  if (response.ok) {
+				const data = await response.json();
+				setStore((prevState) => ({
+				  ...prevState,
+				  favorites: data
+				}));
+			  } else {
+				throw new Error("Failed to fetch user favorites");
+			  }
+			} catch (error) {
+			  console.error("Error fetching user favorites:", error);
+			}
+		  },
 
 
 

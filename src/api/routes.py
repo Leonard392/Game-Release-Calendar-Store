@@ -139,7 +139,7 @@ def get_user_favorites():
     user_favorites = {
         "games": [game.name for game in user.favorite_games],
         "creators": [creator.name for creator in user.favorite_creators],
-        "stores": [store.name for store in user.favorite_store]
+        "stores": [store.name for store in user.favorite_stores]
     }
     
     return jsonify(user_favorites), 200
