@@ -6,7 +6,7 @@ import ProfilePic from "../../img/profile.png";
 import "../../styles/login.css";
 
 export const Signup = () => {
-    const { actions } = useContext(Context);
+    const { actions, store } = useContext(Context);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
@@ -16,7 +16,7 @@ export const Signup = () => {
     const handleSignUp = async () => {
         setError(null);
         try {
-            await actions.signUp(username, password);
+            await actions.signUp(username, password, store);
             setSuccess(true);
             setTimeout(() => {
                 navigate("/");
