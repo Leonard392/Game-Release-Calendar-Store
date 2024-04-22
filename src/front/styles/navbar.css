@@ -135,15 +135,34 @@ ul{
     
 }
 
+.Dropdown_menu ul .logout-link{
+    text-decoration: none;
+}
+
 .Dropdown_menu .login-btn{
     color: #00CCFF;
 }
+
+.Dropdown_menu .logout-btn{
+    margin-top: 63px;
+    color: #00CCFF;
+    background: transparent;
+    border: 1px solid #000026;
+}
+
 
 .Dropdown_menu .login-btn:hover{
     background-color: #00CCFF;
     color: white;
     border: none;
 }
+
+.Dropdown_menu .logout-btn:hover{
+    margin-top: 63px;
+    background-color: #00CCFF;
+    color: white;
+}
+
 
 @media(max-width:1500px){
 

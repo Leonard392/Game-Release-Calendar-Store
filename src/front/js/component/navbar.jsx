@@ -93,8 +93,8 @@ export const Navbar = () => {
                         </Link>
                     </div>
                     ) : (
-                    <Link to="/"> {/* Cambiado a '/logout' para enlazar a la página de cierre de sesión */}
-                        <button onClick={ () => actions.logout(store)} className="action_btn login-btn">Logout</button>
+                    <Link to="/" className="logout-link"> {/* Cambiado a '/logout' para enlazar a la página de cierre de sesión */}
+                        <button onClick={ () => actions.logout(store)} className="action_btn logout-btn">Logout</button>
                     </Link>
                     )}
                 </ul>

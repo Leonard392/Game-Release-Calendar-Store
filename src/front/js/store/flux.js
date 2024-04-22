@@ -8,6 +8,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 	return {
 	  store: {
 		token: null,
+		error: null,
 		bestGames2024: [],
 		bestGames2023: [],
 		bestClassics: [],
@@ -72,35 +73,23 @@ export const getState = ({ getStore, getActions, setStore }) => {
                 });
 
                 // Verifica si la solicitud fue exitosa
-                if (response.ok) {
-                    // Si la solicitud es exitosa, obtén el token de acceso del cuerpo de la respuesta
-                    const data = await response.json();
-                    const currentToken = data.access_token;
+                if (!response.ok) {
+					throw new Error('Failed to log in.');
+				}
 
-                    // Actualiza el estado global con el token de acceso
-					localStorage.setItem('token', currentToken)
-                    setStore({ ...store, token: currentToken, error: null });
-					console.log('store.token:', currentToken); // Accedemos directamente al token actual
-        			console.log('localStorage.token:', localStorage.getItem('token'));
-                    // Devuelve el token de acceso
-                    return currentToken;
-                } else {
-                    // Si la solicitud no fue exitosa, obtén el mensaje de error del cuerpo de la respuesta
-                    const errorData = await response.json();
-                    const errorMessage = errorData.message;
-
-                    // Actualiza el estado global con el error
-                    setStore({ ...store, error: errorMessage });
-
-                    // Lanza un error con el mensaje de error
-                    throw new Error(errorMessage);
-                }
-            } catch (error) {
-                // Maneja los errores de red o de otro tipo
-                setStore({ ...store, error: error.message });
-                throw error;
-            }
-        },
+				const data = await response.json();
+				const currentToken = data.access_token;
+				localStorage.setItem('token', currentToken);
+				setStore({ token: currentToken });
+				setError(null);
+				console.log('store.token:', currentToken); // Accedemos directamente al token actual
+        		console.log('localStorage.token:', localStorage.getItem('token'));
+			} catch (error) {
+				console.error('Error logging in:', error);
+				setError(error.message);
+				throw error;
+			}
+		},
 
 		logout: () =>{
 			console.log("Logged Out");
