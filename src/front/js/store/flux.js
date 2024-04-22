@@ -100,6 +100,31 @@ export const getState = ({ getStore, getActions, setStore }) => {
 		},
 
 
+		addToFavorites: async (gameId) => {
+			try {
+				const token = localStorage.getItem('token');
+				const response = await fetch(`https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'Authorization': `Bearer ${token}`
+					},
+					body: JSON.stringify({ gameId })
+				});
+		
+				if (!response.ok) {
+					throw new Error('Failed to add game to favorites');
+				}
+		
+				console.log('Game added to favorites successfully');
+				// Puedes hacer algo aquí, como actualizar el estado para reflejar el cambio
+			} catch (error) {
+				console.error('Error adding game to favorites:', error);
+				throw error;
+			}
+		},
+
+
 
 
 		//Fetchs from Rawg.io API

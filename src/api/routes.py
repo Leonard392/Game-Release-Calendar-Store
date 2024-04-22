@@ -81,6 +81,50 @@ def logout():
     # No need to do anything for logout with JWT
     return jsonify({"message": "Logout successful"}), 200
 
+
+@api.route('/favorites', methods=['POST'])
+@jwt_required()
+def add_to_favorites():
+    user_id = get_jwt_identity()
+    data = request.json
+    game_id = data.get('game_id')  # Suponiendo que envías el ID del juego en el cuerpo de la solicitud
+    
+    if not game_id:
+        return jsonify({"message": "Game ID is required"}), 400
+    
+    user = User.query.get(user_id)
+    
+    # Verificar si el juego ya está en la lista de favoritos del usuario
+    if FavoriteGame.query.filter_by(user_id=user_id, game_id=game_id).first():
+        return jsonify({"message": "Game already in favorites"}), 400
+    
+    # Agregar el juego a la lista de favoritos del usuario
+    new_favorite = FavoriteGame(user_id=user_id, game_id=game_id)
+    db.session.add(new_favorite)
+    db.session.commit()
+    
+    return jsonify({"message": "Game added to favorites successfully"}), 201
+
+@api.route('/favorites/<int:game_id>', methods=['DELETE'])
+@jwt_required()
+def remove_from_favorites(game_id):
+    user_id = get_jwt_identity()
+    
+    user = User.query.get(user_id)
+    
+    # Verificar si el juego está en la lista de favoritos del usuario
+    favorite_game = FavoriteGame.query.filter_by(user_id=user_id, game_id=game_id).first()
+    if not favorite_game:
+        return jsonify({"message": "Game not found in favorites"}), 404
+    
+    # Eliminar el juego de la lista de favoritos del usuario
+    db.session.delete(favorite_game)
+    db.session.commit()
+    
+    return jsonify({"message": "Game removed from favorites successfully"}), 200
+
+
+
 @api.route('/favorites', methods=['GET'])
 @jwt_required()
 def get_user_favorites():
