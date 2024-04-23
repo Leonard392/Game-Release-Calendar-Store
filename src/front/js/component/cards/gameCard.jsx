@@ -8,12 +8,22 @@ export const GameCard = ({ game }) => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
   
-    const handleAddToFavorites = (gameId) => {
+    const handleAddToFavorites = async (gameId) => {
         if (store.token) {
-            actions.addGameToFavorites(gameId);
+            await actions.addGameToFavorites(gameId);
+            // Después de agregar el juego a favoritos, actualiza el estado del store
+            await actions.fetchUserFavoriteGames();
         } else {
             // Si el usuario no está autenticado, redirige a la página de inicio de sesión
-           navigate("/login")
+            navigate("/login");
+        }
+    };
+  
+    const handleRemoveFromFavorites = async (gameId) => {
+        if (store.token) {
+            await actions.removeGameFromFavorites(gameId);
+            // Espera a que se complete removeGameFromFavorites antes de llamar a fetchUserFavoriteGames
+            await actions.fetchUserFavoriteGames();
         }
     };
   
@@ -38,12 +48,18 @@ export const GameCard = ({ game }) => {
                         <Link to={"/gameDetails/" + game.id}>
                             <button type="button" className="btn btn-outline mt-3 me-2 learnMoreBtn">See more! </button>
                         </Link>
-                        <button className="btn btn-outline-secondary" onClick={() => handleAddToFavorites(game.id)}>
-                            {isGameInFavorites(game.id) ? 'Remove from Favorites' : 'Add to Favorites'}
-                        </button>
+                        {isGameInFavorites(game.id) ? (
+                            <button className="btn btn-outline-secondary" onClick={() => handleRemoveFromFavorites(game.id)}>
+                                Remove from Favorites
+                            </button>
+                        ) : (
+                            <button className="btn btn-outline-secondary" onClick={() => handleAddToFavorites(game.id)}>
+                                Add to Favorites
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>
         </div>
     );
-  };
+};

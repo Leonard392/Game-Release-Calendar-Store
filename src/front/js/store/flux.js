@@ -9,10 +9,10 @@ export const getState = ({ getStore, getActions, setStore }) => {
 	  store: {
 		token: null,
 		error: null,
-		favoritesGames: null,
-		favoritesCreators: null,
-		favoritesStores: null,
-		favoritesPlatforms: null,
+		favoritesGames: [],
+		favoritesCreators: [],
+		favoritesStores: [],
+		favoritesPlatforms: [],
 		bestGames2024: [],
 		bestGames2023: [],
 		bestClassics: [],
@@ -117,7 +117,9 @@ export const getState = ({ getStore, getActions, setStore }) => {
 				if (!response.ok) {
 					throw new Error("Failed to add game to favorites");
 				}
-				// Handle success
+				// Manejar éxito
+				const updatedFavorites = [...getStore().favoritesGames, gameId];
+				setStore({ favoritesGames: updatedFavorites });
 			} catch (error) {
 				console.error("Error adding game to favorites:", error);
 			}
@@ -139,6 +141,8 @@ export const getState = ({ getStore, getActions, setStore }) => {
 		
 				console.log('Game removed from favorites successfully');
 				// Puedes hacer algo aquí, como actualizar el estado para reflejar el cambio
+				const updatedFavorites = getStore().favoritesGames.filter(favoriteId => favoriteId !== gameId);
+        		setStore({ favoritesGames: updatedFavorites });
 			} catch (error) {
 				console.error('Error removing game from favorites:', error);
 				throw error;
