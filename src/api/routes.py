@@ -82,9 +82,11 @@ def logout():
     return jsonify({"message": "Logout successful"}), 200
 
 
-@api.route('/favorites', methods=['POST'])
+# ROUTES FOR FAVORITE GAMES
+
+@api.route('/favorites/games', methods=['POST'])
 @jwt_required()
-def add_to_favorites():
+def add_game_to_favorites():
     try:
         user_id = get_jwt_identity()
         data = request.json
@@ -110,9 +112,9 @@ def add_to_favorites():
     except Exception as e:
         return jsonify({"message": str(e)}), 500
 
-@api.route('/favorites/<int:game_id>', methods=['DELETE'])
+@api.route('/favorites/games/<int:game_id>', methods=['DELETE'])
 @jwt_required()
-def remove_from_favorites(game_id):
+def remove_game_from_favorites(game_id):
     user_id = get_jwt_identity()
     
     user = User.query.get(user_id)
@@ -128,18 +130,70 @@ def remove_from_favorites(game_id):
     
     return jsonify({"message": "Game removed from favorites successfully"}), 200
 
-
-@api.route('/favorites', methods=['GET'])
+@api.route('/favorites/games', methods=['GET'])
 @jwt_required()
-def get_user_favorites():
+def get_user_game_favorites():
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
     
-    user_favorites = {
-        "games": [game.game_id for game in user.favorite_games],
-        "creators": [creator.name for creator in user.favorite_creators],
-        "stores": [store.name for store in user.favorite_stores],
-        "platforms": [platform.name for store in user.favorite_platforms]
-    }
+    user_game_favorites = [game.game_id for game in user.favorite_games]
     
-    return jsonify(user_favorites), 200
+    return jsonify(user_game_favorites), 200
+
+#ROUTES FOR FAVORITE CREATORS
+
+@api.route('/favorites/creators', methods=['POST'])
+@jwt_required()
+def add_creator_to_favorites():
+    try:
+        user_id = get_jwt_identity()
+        data = request.json
+        creator_id = data.get('creator_id')
+        
+        if not creator_id:
+            return jsonify({"message": "Creator ID is required"}), 400
+        
+        user = User.query.get(user_id)
+        if not user:
+            return jsonify({"message": "User not found"}), 404
+        
+        # Verificar si el juego ya está en la lista de favoritos del usuario
+        if FavoriteCreator.query.filter_by(user_id=user_id, creator_id=creator_id).first():
+            return jsonify({"message": "Creator already in favorites"}), 400
+        
+        # Agregar el juego a la lista de favoritos del usuario
+        new_favorite = FavoriteCreator(user_id=user_id, creator_id=creator_id)
+        db.session.add(new_favorite)
+        db.session.commit()
+        
+        return jsonify({"message": "Creator added to favorites successfully"}), 201
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+
+@api.route('/favorites/creators/<int:creator_id>', methods=['DELETE'])
+@jwt_required()
+def remove_creator_from_favorites(creator_id):
+    user_id = get_jwt_identity()
+    
+    user = User.query.get(user_id)
+    
+    # Verificar si el juego está en la lista de favoritos del usuario
+    favorite_creator = FavoriteCreator.query.filter_by(user_id=user_id, creator_id=creator_id).first()
+    if not favorite_creator:
+        return jsonify({"message": "Creator not found in favorites"}), 404
+    
+    # Eliminar el juego de la lista de favoritos del usuario
+    db.session.delete(favorite_creator)
+    db.session.commit()
+    
+    return jsonify({"message": "Creator removed from favorites successfully"}), 200
+
+@api.route('/favorites/creator', methods=['GET'])
+@jwt_required()
+def get_user_creator_favorites():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    
+    user_creator_favorites = [creator.creator_id for creator in user.favorite_creators]
+    
+    return jsonify(user_creator_favorites), 200
