@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import { Context } from "../../store/Context";
 import { GameCard } from "../../component/cards/gameCard.jsx"
+import { Link, useHistory } from "react-router-dom";
+
 
 export const Favorites = () => {
   const { store, actions } = useContext(Context);
@@ -15,19 +17,19 @@ export const Favorites = () => {
   }, [store.token]);
 
   useEffect(() => {
-    const fetchGameData = async (gameId) => {
-      try {
-          const response = await fetch(`https://api.rawg.io/api/games/${gameId}?key=${KEY_API}`);
-          if (!response.ok) {
-              throw new Error('Failed to fetch game data');
+      const fetchGameData = async (gameId) => {
+          try {
+              const response = await fetch(`https://api.rawg.io/api/games/${gameId}?key=${KEY_API}`);
+              if (!response.ok) {
+                  throw new Error('Failed to fetch game data');
+              }
+              const gameData = await response.json();
+              return gameData; // Devolver directamente los datos del juego
+          } catch (error) {
+              console.error('Error fetching game data:', error);
+              return null;
           }
-          const gameData = await response.json();
-          return gameData; // Devolver directamente los datos del juego
-      } catch (error) {
-          console.error('Error fetching game data:', error);
-          return null;
-      }
-  };
+      };
 
       const fetchAllGameDetails = async () => {
           const gamesData = await Promise.all(store.favorites.games.map(id => fetchGameData(id)));
@@ -45,7 +47,23 @@ export const Favorites = () => {
           <div className="row">
               {userFavorites.map((game, index) => (
                   <div className="col-md-4" key={index}>
-                      <GameCard game={game} />
+                      <div className="card mb-3">
+                          <div className="row no-gutters">
+                              <div className="col-md-12">
+                                  <img src={game.background_image} className="card-img" alt={game.name} />
+                              </div>
+                              <div className="col-md-12">
+                                  <div className="card-body">
+                                      <h5 className="card-title">{game.name}</h5>
+                                      <p className="card-text">Released Date: {game.released}</p>
+                                      <p className="card-text">Rating: {game.rating}</p>
+                                      <Link to={"/gameDetails/" + game.id}>
+                                          <button type="button" className="btn btn-outline mt-3 me-2 learnMoreBtn">See more! </button>
+                                      </Link>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                   </div>
               ))}
           </div>
