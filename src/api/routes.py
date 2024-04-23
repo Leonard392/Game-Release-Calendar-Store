@@ -129,7 +129,6 @@ def remove_from_favorites(game_id):
     return jsonify({"message": "Game removed from favorites successfully"}), 200
 
 
-
 @api.route('/favorites', methods=['GET'])
 @jwt_required()
 def get_user_favorites():
@@ -137,9 +136,7 @@ def get_user_favorites():
     user = User.query.get(user_id)
     
     user_favorites = {
-        "games": [game.name for game in user.favorite_games],
-        "creators": [creator.name for creator in user.favorite_creators],
-        "stores": [store.name for store in user.favorite_stores]
+        "games": [game.game_id for game in user.favorite_games]
     }
     
     return jsonify(user_favorites), 200

@@ -9,7 +9,9 @@ export const getState = ({ getStore, getActions, setStore }) => {
 	  store: {
 		token: null,
 		error: null,
-		favorites: null,
+		favorites: {
+			games: []
+		},
 		bestGames2024: [],
 		bestGames2023: [],
 		bestClassics: [],
@@ -148,6 +150,13 @@ export const getState = ({ getStore, getActions, setStore }) => {
 				throw new Error("User not authenticated"); // Lanzar un error si el usuario no está autenticado
 			  }
 			  
+			  // Define la función fetchGameData aquí
+			  const fetchGameData = async (gameId) => {
+				const response = await fetch(`https://api.rawg.io/api/games/${gameId}?key=${KEY_API}`);
+				const gameData = await response.json();
+				return gameData;
+			  };
+		  
 			  const response = await fetch("https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites", {
 				headers: {
 				  Authorization: `Bearer ${token}`
@@ -155,9 +164,10 @@ export const getState = ({ getStore, getActions, setStore }) => {
 			  });
 			  if (response.ok) {
 				const data = await response.json();
+				const gamesData = await Promise.all(data.games.map(id => fetchGameData(id)));
 				setStore((prevState) => ({
 				  ...prevState,
-				  favorites: data
+				  favorites: gamesData
 				}));
 			  } else {
 				throw new Error("Failed to fetch user favorites");
