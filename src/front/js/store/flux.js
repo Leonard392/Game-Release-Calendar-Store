@@ -9,9 +9,10 @@ export const getState = ({ getStore, getActions, setStore }) => {
 	  store: {
 		token: null,
 		error: null,
-		favorites: {
-			games: []
-		},
+		favoritesGames: null,
+		favoritesCreators: null,
+		favoritesStores: null,
+		favoritesPlatforms: null,
 		bestGames2024: [],
 		bestGames2023: [],
 		bestClassics: [],
@@ -103,9 +104,9 @@ export const getState = ({ getStore, getActions, setStore }) => {
 		},
 
 
-		addToFavorites: async (gameId) => {
+		addGameToFavorites: async (gameId) => {
 			try {
-				const response = await fetch("https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites", {
+				const response = await fetch("https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites/games", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
@@ -122,10 +123,10 @@ export const getState = ({ getStore, getActions, setStore }) => {
 			}
 		},
 		
-		removeFromFavorites: async (gameId) => {
+		removeGameFromFavorites: async (gameId) => {
 			try {
 				const token = localStorage.getItem('token');
-				const response = await fetch(`https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites/${gameId}`, {
+				const response = await fetch(`https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites/games/${gameId}`, {
 					method: 'DELETE',
 					headers: {
 						'Authorization': `Bearer ${token}`
@@ -143,7 +144,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 				throw error;
 			}
 		},
-		fetchUserFavorites: async () => {
+		fetchUserFavoriteGames: async () => {
 			try {
 			  const { token } = getStore(); // Obtener el token del store
 			  if (!token) {
@@ -157,7 +158,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 				return gameData;
 			  };
 		  
-			  const response = await fetch("https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites", {
+			  const response = await fetch("https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites/games", {
 				headers: {
 				  Authorization: `Bearer ${token}`
 				}
@@ -167,7 +168,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 				const gamesData = await Promise.all(data.games.map(id => fetchGameData(id)));
 				setStore((prevState) => ({
 				  ...prevState,
-				  favorites: gamesData
+				  favoriteGames: gamesData
 				}));
 			  } else {
 				throw new Error("Failed to fetch user favorites");

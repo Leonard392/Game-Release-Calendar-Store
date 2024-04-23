@@ -10,7 +10,7 @@ export const GameCard = ({ game }) => {
   
     const handleAddToFavorites = (gameId) => {
         if (store.token) {
-            actions.addToFavorites(gameId);
+            actions.addGameToFavorites(gameId);
         } else {
             // Si el usuario no está autenticado, redirige a la página de inicio de sesión
            navigate("/login")
@@ -18,8 +18,8 @@ export const GameCard = ({ game }) => {
     };
   
     const isGameInFavorites = (gameId) => {
-        if (store.favorites && store.favorites.games) {
-            return store.favorites.games.includes(gameId);
+        if (store.favoritesGames) {
+            return store.favoritesGames.includes(gameId);
         }
         return false;
     };

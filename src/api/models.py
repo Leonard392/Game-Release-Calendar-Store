@@ -13,9 +13,9 @@ class User(db.Model):
     # Relationship with favorite creators
     favorite_creators = db.relationship('FavoriteCreator', backref='user', lazy=True)
     # Relationship with favorite store
-    favorite_store = db.relationship('FavoriteStore', backref='user', lazy=True)
+    favorite_stores = db.relationship('FavoriteStore', backref='user', lazy=True)
     # Relationship with favorite store
-    favorite_platform = db.relationship('FavoritePlatform', backref='user', lazy=True)
+    favorite_platforms = db.relationship('FavoritePlatform', backref='user', lazy=True)
 
     def __repr__(self):
         return f'<User {self.username}>'

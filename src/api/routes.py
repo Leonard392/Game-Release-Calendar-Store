@@ -228,7 +228,7 @@ def add_store_to_favorites():
     except Exception as e:
         return jsonify({"message": str(e)}), 500
 
-@api.route('/favorites/stores/<int:creator_id>', methods=['DELETE'])
+@api.route('/favorites/stores/<int:store_id>', methods=['DELETE'])
 @jwt_required()
 def remove_store_from_favorites(store_id):
     user_id = get_jwt_identity()
@@ -288,7 +288,7 @@ def add_platform_to_favorites():
     except Exception as e:
         return jsonify({"message": str(e)}), 500
 
-@api.route('/favorites/platforms/<int:game_id>', methods=['DELETE'])
+@api.route('/favorites/platforms/<int:platform_id>', methods=['DELETE'])
 @jwt_required()
 def remove_platform_from_favorites(platform_id):
     user_id = get_jwt_identity()
