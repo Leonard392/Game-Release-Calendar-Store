@@ -255,3 +255,63 @@ def get_user_store_favorites():
     user_store_favorites = [store.store_id for store in user.favorite_stores]
     
     return jsonify(user_store_favorites), 200
+
+
+
+# ROUTES FOR FAVORITE PLATFORMS
+
+@api.route('/favorites/platforms', methods=['POST'])
+@jwt_required()
+def add_platform_to_favorites():
+    try:
+        user_id = get_jwt_identity()
+        data = request.json
+        platform_id = data.get('platform_id')
+        
+        if not platform_id:
+            return jsonify({"message": "Platform ID is required"}), 400
+        
+        user = User.query.get(user_id)
+        if not user:
+            return jsonify({"message": "User not found"}), 404
+        
+        # Verificar si el juego ya está en la lista de favoritos del usuario
+        if FavoritePlatform.query.filter_by(user_id=user_id, platform_id=platform_id).first():
+            return jsonify({"message": "Platform already in favorites"}), 400
+        
+        # Agregar el juego a la lista de favoritos del usuario
+        new_favorite = FavoritePlatform(user_id=user_id, platform_id=platform_id)
+        db.session.add(new_favorite)
+        db.session.commit()
+        
+        return jsonify({"message": "Platform added to favorites successfully"}), 201
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+
+@api.route('/favorites/platforms/<int:game_id>', methods=['DELETE'])
+@jwt_required()
+def remove_platform_from_favorites(platform_id):
+    user_id = get_jwt_identity()
+    
+    user = User.query.get(user_id)
+    
+    # Verificar si el juego está en la lista de favoritos del usuario
+    favorite_platform = FavoritePlatform.query.filter_by(user_id=user_id, platform_id=platform_id).first()
+    if not favorite_platform:
+        return jsonify({"message": "Platform not found in favorites"}), 404
+    
+    # Eliminar el juego de la lista de favoritos del usuario
+    db.session.delete(favorite_platform)
+    db.session.commit()
+    
+    return jsonify({"message": "Platform removed from favorites successfully"}), 200
+
+@api.route('/favorites/platforms', methods=['GET'])
+@jwt_required()
+def get_user_platform_favorites():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    
+    user_platform_favorites = [platform.platform_id for platform in user.favorite_platforms]
+    
+    return jsonify(user_platform_favorites), 200
