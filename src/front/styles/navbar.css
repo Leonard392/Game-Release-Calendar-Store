@@ -119,6 +119,15 @@ ul{
     justify-content: center;
 }
 
+.dropdown-h4{
+    color: #2882E3;
+    transition: all 0.3s;
+}
+
+.dropdown-h4:hover{
+    color: #00CCFF;
+}
+
 .Dropdown_menu .naV-btn,
 .Dropdown_menu .action_btn{
     width: 100%;

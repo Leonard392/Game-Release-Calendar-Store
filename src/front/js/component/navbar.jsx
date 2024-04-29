@@ -70,22 +70,22 @@ export const Navbar = () => {
                 <ul>
                     <li>
                         <Link to="/platforms" className="naV-link">
-                            <h4>PLATFORMS</h4>
+                            <h4 className="dropdown-h4">PLATFORMS</h4>
                         </Link>
                     </li>
                     <li>
                         <Link to="/creators" className="naV-link">
-                            <h4>CREATORS</h4>
+                            <h4 className="dropdown-h4">CREATORS</h4>
                         </Link>
                     </li>
                     <li>
                         <Link to="/stores" className="naV-link">
-                            <h4>STORES</h4>
+                            <h4 className="dropdown-h4">STORES</h4>
                         </Link>
                     </li>
                     <li>
                         <Link to="/genres/action" className="naV-link">
-                            <h4>GAMES</h4>
+                            <h4 className="dropdown-h4">GAMES</h4>
                         </Link>
                     </li>
                     {!store.token ? (
