@@ -5,7 +5,7 @@ import "../../styles/navbar.css"
 
 export const Navbar = () => {
     const { store, actions } = useContext(Context);
-	const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleClick = () => {
         setIsOpen(!isOpen);
@@ -51,11 +51,16 @@ export const Navbar = () => {
                         </Link>
                     </div>
                 ) : (
-                    <Link to="/"> {/* Cambiado a '/logout' para enlazar a la página de cierre de sesión */}
-                        <button onClick={ () => actions.logout()} className="action_btn login-btn">Logout</button>
-                    </Link>
+                    <div className="signup-login">
+                        <Link to="/favorites" className="signup-login-link">
+                            <button className="action_btn signup-btn">Me!</button>
+                        </Link>
+                        <Link to="/" className="signup-login-link"> {/*Cambiado a '/logout' para enlazar a la página de cierre de sesión */}
+                            <button onClick={() => actions.logout(store)} className="action_btn login-btn">Logout</button>
+                        </Link>
+                    </div>
                 )}
-                
+
                 <div className="toggle_btn" onClick={handleClick}>
                     <i className={`fa-solid ${isOpen ? "fa-xmark" : "fa-bars"}`}></i>
                 </div>
@@ -84,18 +89,24 @@ export const Navbar = () => {
                         </Link>
                     </li>
                     {!store.token ? (
-                    <div className="signup-login">
-                        <Link to="/signup" className="signup-login-link">
-                            <button className="action_btn signup-btn">Get Started</button>
-                        </Link>
-                        <Link to="/login" className="signup-login-link">
-                            <button className="action_btn login-btn">Log In</button>
-                        </Link>
-                    </div>
+                        <div className="signup-login">
+                            <Link to="/signup" className="signup-login-link">
+                                <button className="action_btn signup-btn">Get Started</button>
+                            </Link>
+                            <Link to="/login" className="signup-login-link">
+                                <button className="action_btn login-btn">Log In</button>
+                            </Link>
+                        </div>
                     ) : (
-                    <Link to="/" className="logout-link"> {/* Cambiado a '/logout' para enlazar a la página de cierre de sesión */}
-                        <button onClick={ () => actions.logout(store)} className="action_btn logout-btn">Logout</button>
-                    </Link>
+                        <div className="signup-login">
+                            <Link to="/favorites" className="signup-login-link">
+                                <button className="action_btn signup-btn">Me!</button>
+                            </Link>
+                            <Link to="/" className="signup-login-link"> {/*Cambiado a '/logout' para enlazar a la página de cierre de sesión */}
+                                <button onClick={() => actions.logout(store)} className="action_btn login-btn">Logout</button>
+                            </Link>
+                        </div>
+
                     )}
                 </ul>
             </div>

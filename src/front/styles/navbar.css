@@ -104,6 +104,7 @@ ul{
 }
 
 .Dropdown_menu.open{
+    z-index: 1;
     height: 346px;
 }
 
@@ -133,10 +134,6 @@ ul{
 .Dropdown_menu .signup-login .signup-login-link{
     text-decoration: none;
     
-}
-
-.Dropdown_menu ul .logout-link{
-    text-decoration: none;
 }
 
 .Dropdown_menu .login-btn{
