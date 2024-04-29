@@ -104,6 +104,11 @@ export const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 
+
+			//Favorite Games Functions
+
+
+
 			addGameToFavorites: async (game) => {
 				try {
 					const response = await fetch("https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites/games", {
@@ -207,6 +212,140 @@ export const getState = ({ getStore, getActions, setStore }) => {
 					console.error("Error fetching user favorites:", error);
 				}
 			},
+
+
+			//Favorite Creators Functions
+
+			addCreatorToFavorites: async (creator) => {
+				try {
+					const response = await fetch("https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites/creators", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							"Authorization": `Bearer ${localStorage.getItem("token")}`
+						},
+						body: JSON.stringify({ creator_id: creator.id })
+					});
+					if (!response.ok) {
+						throw new Error("Failed to add game to favorites");
+					}
+					// Manejar éxito
+					const updatedFavorites = [...getStore().favoritesCreators, creator];
+					setStore({ favoritesCreators: updatedFavorites });
+				} catch (error) {
+					console.error("Error adding game to favorites:", error);
+				}
+			},
+
+			removeCreatorFromFavorites: async (creatorId) => {
+				try {
+					const token = localStorage.getItem('token');
+					const response = await fetch(`https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites/creators/${creatorId}`, {
+						method: 'DELETE',
+						headers: {
+							'Authorization': `Bearer ${token}`
+						}
+					});
+
+					if (!response.ok) {
+						throw new Error('Failed to remove game from favorites');
+					}
+
+					console.log('Game removed from favorites successfully');
+					// Puedes hacer algo aquí, como actualizar el estado para reflejar el cambio
+					const updatedFavorites = getStore().favoritesCreators.filter(favoriteId => favoriteId.id !== creatorId);
+					setStore({ favoritesCreators: updatedFavorites });
+				} catch (error) {
+					console.error('Error removing game from favorites:', error);
+					throw error;
+				}
+			},
+			fetchUserFavoriteCreators: async () => {
+				try {
+					const { token } = getStore(); // Obtener el token del store
+					if (!token) {
+						throw new Error("User not authenticated"); // Lanzar un error si el usuario no está autenticado
+					}
+
+					// Define la función fetchGameData aquí
+					const fetchCreatorData = async (creatorId) => {
+						const response = await fetch(`https://api.rawg.io/api/creators/${creatorId}?key=${KEY_API}`);
+						const creatorData = await response.json();
+						return creatorData;
+					};
+
+					const response = await fetch("https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites/creators", {
+						headers: {
+							Authorization: `Bearer ${token}`
+						}
+					});
+					if (response.ok) {
+						const data = await response.json();
+						const creatorsData = await Promise.all(data.map(id => fetchCreatorData(id)));
+						
+						const listaDeJuegosFavoritos = [...getStore().favoritesCreators, ...creatorsData];
+
+						let unicos = [];
+
+						// Declare an empty object
+						let objetonUnicos = {};
+
+						// Loop for the array elements
+						for (let i in listaDeJuegosFavoritos) {
+							console.log(i);
+							// Extract the title
+							let objTitle = listaDeJuegosFavoritos[i]['id'];
+							console.log(objTitle);
+
+							// Use the title as the index
+							objetonUnicos[objTitle] = listaDeJuegosFavoritos[i];
+							console.log(listaDeJuegosFavoritos[i]);
+						}
+
+						// Loop to push unique object into array
+						for (let i in objetonUnicos) {
+							unicos.push(objetonUnicos[i]);
+							console.log(unicos);
+						}
+
+						setStore({
+
+							favoritesCreators: unicos
+						});
+					} else {
+						throw new Error("Failed to fetch user favorites");
+					}
+				} catch (error) {
+					console.error("Error fetching user favorites:", error);
+				}
+			},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
