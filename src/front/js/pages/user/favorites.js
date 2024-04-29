@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FavoriteGames } from "./favoriteGames";
 import { FavoriteCreators } from "./favoriteCreators";
+import { FavoritePlatforms } from "./favoritePlatforms";
 
 
 export const Favorites = () => {
@@ -9,6 +10,7 @@ export const Favorites = () => {
       <div>
         <FavoriteGames/>
         <FavoriteCreators/>
+        <FavoritePlatforms/>
       </div>
   );
 };

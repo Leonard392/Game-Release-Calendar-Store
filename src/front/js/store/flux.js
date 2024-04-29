@@ -175,7 +175,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 					if (response.ok) {
 						const data = await response.json();
 						const gamesData = await Promise.all(data.map(id => fetchGameData(id)));
-						
+
 						const listaDeJuegosFavoritos = [...getStore().favoritesGames, ...gamesData];
 
 						let unicos = [];
@@ -282,7 +282,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 					if (response.ok) {
 						const data = await response.json();
 						const creatorsData = await Promise.all(data.map(id => fetchCreatorData(id)));
-						
+
 						const listaDeJuegosFavoritos = [...getStore().favoritesCreators, ...creatorsData];
 
 						let unicos = [];
@@ -320,10 +320,112 @@ export const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			//Favorite Platforms Functions
 
 
+			addPlatformToFavorites: async (platform) => {
+				try {
+					const response = await fetch("https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites/platforms", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							"Authorization": `Bearer ${localStorage.getItem("token")}`
+						},
+						body: JSON.stringify({ platform_id: platform.id })
+					});
+					if (!response.ok) {
+						throw new Error("Failed to add game to favorites");
+					}
+					// Manejar éxito
+					const updatedFavorites = [...getStore().favoritesPlatforms, platform];
+					setStore({ favoritesPlatforms: updatedFavorites });
+				} catch (error) {
+					console.error("Error adding game to favorites:", error);
+				}
+			},
 
+			removePlatformFromFavorites: async (platformId) => {
+				try {
+					const token = localStorage.getItem('token');
+					const response = await fetch(`https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites/platforms/${platformId}`, {
+						method: 'DELETE',
+						headers: {
+							'Authorization': `Bearer ${token}`
+						}
+					});
 
+					if (!response.ok) {
+						throw new Error('Failed to remove game from favorites');
+					}
+
+					console.log('Game removed from favorites successfully');
+					// Puedes hacer algo aquí, como actualizar el estado para reflejar el cambio
+					const updatedFavorites = getStore().favoritesPlatforms.filter(favoriteId => favoriteId.id !== platformId);
+					setStore({ favoritesPlatforms: updatedFavorites });
+				} catch (error) {
+					console.error('Error removing game from favorites:', error);
+					throw error;
+				}
+			},
+			fetchUserFavoritePlatforms: async () => {
+				try {
+					const { token } = getStore(); // Obtener el token del store
+					if (!token) {
+						throw new Error("User not authenticated"); // Lanzar un error si el usuario no está autenticado
+					}
+
+					// Define la función fetchGameData aquí
+					const fetchPlatformData = async (platformId) => {
+						const response = await fetch(`https://api.rawg.io/api/platforms/${platformId}?key=${KEY_API}`);
+						const platformData = await response.json();
+						return platformData;
+					};
+
+					const response = await fetch("https://special-potato-x7wxx6965vq2p9qp-3001.app.github.dev/api/favorites/platforms", {
+						headers: {
+							Authorization: `Bearer ${token}`
+						}
+					});
+					if (response.ok) {
+						const data = await response.json();
+						const platformsData = await Promise.all(data.map(id => fetchPlatformData(id)));
+
+						const listaDeJuegosFavoritos = [...getStore().favoritesPlatforms, ...platformsData];
+
+						let unicos = [];
+
+						// Declare an empty object
+						let objetonUnicos = {};
+
+						// Loop for the array elements
+						for (let i in listaDeJuegosFavoritos) {
+							console.log(i);
+							// Extract the title
+							let objTitle = listaDeJuegosFavoritos[i]['id'];
+							console.log(objTitle);
+
+							// Use the title as the index
+							objetonUnicos[objTitle] = listaDeJuegosFavoritos[i];
+							console.log(listaDeJuegosFavoritos[i]);
+						}
+
+						// Loop to push unique object into array
+						for (let i in objetonUnicos) {
+							unicos.push(objetonUnicos[i]);
+							console.log(unicos);
+						}
+
+						setStore({
+
+							favoritesPlatforms: unicos
+						});
+					} else {
+						throw new Error("Failed to fetch user favorites");
+					}
+				} catch (error) {
+					console.error("Error fetching user favorites:", error);
+				}
+			},
 
 
 
