@@ -17,8 +17,6 @@ export const Platformcard = ({ platform }) => {
   const handleAddToFavorites = async (platform) => {
     if (store.token) {
       await actions.addPlatformToFavorites(platform);
-      // Después de agregar el juego a favoritos, actualiza el estado del store
-      console.log(store.favoritesPlatforms);
     } else {
       // Si el usuario no está autenticado, redirige a la página de inicio de sesión
       navigate("/login");
@@ -28,14 +26,11 @@ export const Platformcard = ({ platform }) => {
   const handleRemoveFromFavorites = async (platformId) => {
     if (store.token) {
       await actions.removePlatformFromFavorites(platformId);
-      // Espera a que se complete removeGameFromFavorites antes de llamar a fetchUserFavoriteGames
-      console.log(store.favoritesPlatforms);
     }
   };
 
   const isPlatformInFavorites = (platformId) => {
     if (store.favoritesPlatforms) {
-      console.log(store.favoritesPlatforms, "lista de juegos favoritos");
       return store.favoritesPlatforms.filter(platform => platform.id == platformId).length;
     }
     return false;

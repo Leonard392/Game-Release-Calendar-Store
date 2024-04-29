@@ -5,17 +5,15 @@ import { CreatorCard } from "../../component/cards/creatorCard.jsx";
 
 
 export const FavoriteCreators = () => {
-  const { store, actions } = useContext(Context);
+    const { store, actions } = useContext(Context);
 
-  useEffect(() => {
-    actions.fetchUserFavoriteCreators()
-}, []);
+    useEffect(() => {
+        actions.fetchUserFavoriteCreators()
+    }, []);
 
-
-    console.log(store.favoritesCreators);
-  return (
-      <div>
-          <h2>Favorite Creators</h2>
+    return (
+        <div>
+            <h2>Favorite Creators</h2>
             <div className="row">
                 {store.favoritesCreators.map(creator => (
                     <div className="col-lg-4 col-md-6 col-sm-12" key={creator.id}>
@@ -23,6 +21,6 @@ export const FavoriteCreators = () => {
                     </div>
                 ))}
             </div>
-      </div>
-  );
+        </div>
+    );
 };

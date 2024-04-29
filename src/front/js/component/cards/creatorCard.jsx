@@ -16,8 +16,6 @@ export const CreatorCard = ({ creator }) => {
   const handleAddToFavorites = async (creator) => {
       if (store.token) {
           await actions.addCreatorToFavorites(creator);
-          // Después de agregar el juego a favoritos, actualiza el estado del store
-          console.log(store.favoritesCreators);
       } else {
           // Si el usuario no está autenticado, redirige a la página de inicio de sesión
           navigate("/login");
@@ -27,14 +25,11 @@ export const CreatorCard = ({ creator }) => {
   const handleRemoveFromFavorites = async (creatorId) => {
       if (store.token) {
           await actions.removeCreatorFromFavorites(creatorId);
-          // Espera a que se complete removeGameFromFavorites antes de llamar a fetchUserFavoriteGames
-          console.log(store.favoritesCreators);
       }
   };
 
   const isCreatorInFavorites = (creatorId) => {
       if (store.favoritesCreators) {
-          console.log(store.favoritesCreators, "lista de juegos favoritos");
           return store.favoritesCreators.filter(creator => creator.id == creatorId).length;
       }
       return false;

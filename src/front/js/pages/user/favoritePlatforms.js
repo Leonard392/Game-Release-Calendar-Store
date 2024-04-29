@@ -5,17 +5,15 @@ import { Platformcard } from "../../component/cards/platformCard.jsx";
 
 
 export const FavoritePlatforms = () => {
-  const { store, actions } = useContext(Context);
+    const { store, actions } = useContext(Context);
 
-  useEffect(() => {
-    actions.fetchUserFavoritePlatforms()
-}, []);
+    useEffect(() => {
+        actions.fetchUserFavoritePlatforms()
+    }, []);
 
-
-    console.log(store.favoritesPlatforms);
-  return (
-      <div>
-          <h2>My Stores</h2>
+    return (
+        <div>
+            <h2>My Stores</h2>
             <div className="row">
                 {store.favoritesPlatforms.map(platform => (
                     <div className="col-lg-4 col-md-6 col-sm-12" key={platform.id}>
@@ -23,6 +21,6 @@ export const FavoritePlatforms = () => {
                     </div>
                 ))}
             </div>
-      </div>
-  );
+        </div>
+    );
 };

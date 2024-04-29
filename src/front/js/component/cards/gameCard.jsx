@@ -15,8 +15,6 @@ export const GameCard = ({ game }) => {
     const handleAddToFavorites = async (game) => {
         if (store.token) {
             await actions.addGameToFavorites(game);
-            // Después de agregar el juego a favoritos, actualiza el estado del store
-            console.log(store.favoritesGames);
         } else {
             // Si el usuario no está autenticado, redirige a la página de inicio de sesión
             navigate("/login");
@@ -26,14 +24,11 @@ export const GameCard = ({ game }) => {
     const handleRemoveFromFavorites = async (gameId) => {
         if (store.token) {
             await actions.removeGameFromFavorites(gameId);
-            // Espera a que se complete removeGameFromFavorites antes de llamar a fetchUserFavoriteGames
-            console.log(store.favoritesGames);
         }
     };
   
     const isGameInFavorites = (gameId) => {
         if (store.favoritesGames) {
-            console.log(store.favoritesGames, "lista de juegos favoritos");
             return store.favoritesGames.filter(game => game.id == gameId).length;
         }
         return false;

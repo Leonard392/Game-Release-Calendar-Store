@@ -5,17 +5,15 @@ import { GameCard } from "../../component/cards/gameCard.jsx"
 
 
 export const FavoriteGames = () => {
-  const { store, actions } = useContext(Context);
+    const { store, actions } = useContext(Context);
 
-  useEffect(() => {
-    actions.fetchUserFavoriteGames()
-}, []);
+    useEffect(() => {
+        actions.fetchUserFavoriteGames()
+    }, []);
 
-
-    console.log(store.favoritesGames);
-  return (
-      <div>
-          <h2>Wish List</h2>
+    return (
+        <div>
+            <h2>Wish List</h2>
             <div className="row">
                 {store.favoritesGames.map(game => (
                     <div className="col-lg-4 col-md-6 col-sm-12" key={game.id}>
@@ -23,6 +21,6 @@ export const FavoriteGames = () => {
                     </div>
                 ))}
             </div>
-      </div>
-  );
+        </div>
+    );
 };

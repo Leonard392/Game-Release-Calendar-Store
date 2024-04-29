@@ -9,8 +9,8 @@ export const Favorites = () => {
   return (
       <div>
         <FavoriteGames/>
-        <FavoriteCreators/>
         <FavoritePlatforms/>
+        <FavoriteCreators/>
       </div>
   );
 };

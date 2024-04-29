@@ -145,7 +145,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 					}
 
 					console.log('Game removed from favorites successfully');
-					// Puedes hacer algo aquí, como actualizar el estado para reflejar el cambio
+					// actualizar el estado para reflejar el cambio
 					const updatedFavorites = getStore().favoritesGames.filter(favoriteId => favoriteId.id !== gameId);
 					setStore({ favoritesGames: updatedFavorites });
 				} catch (error) {
@@ -176,7 +176,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 						const data = await response.json();
 						const gamesData = await Promise.all(data.map(id => fetchGameData(id)));
 
-						const listaDeJuegosFavoritos = [...getStore().favoritesGames, ...gamesData];
+						const listaFavoritos = [...getStore().favoritesGames, ...gamesData];
 
 						let unicos = [];
 
@@ -184,21 +184,17 @@ export const getState = ({ getStore, getActions, setStore }) => {
 						let objetonUnicos = {};
 
 						// Loop for the array elements
-						for (let i in listaDeJuegosFavoritos) {
-							console.log(i);
+						for (let i in listaFavoritos) {
 							// Extract the title
-							let objTitle = listaDeJuegosFavoritos[i]['id'];
-							console.log(objTitle);
+							let objTitle = listaFavoritos[i]['id'];
 
 							// Use the title as the index
-							objetonUnicos[objTitle] = listaDeJuegosFavoritos[i];
-							console.log(listaDeJuegosFavoritos[i]);
+							objetonUnicos[objTitle] = listaFavoritos[i];
 						}
 
 						// Loop to push unique object into array
 						for (let i in objetonUnicos) {
 							unicos.push(objetonUnicos[i]);
-							console.log(unicos);
 						}
 
 						setStore({
@@ -227,13 +223,13 @@ export const getState = ({ getStore, getActions, setStore }) => {
 						body: JSON.stringify({ creator_id: creator.id })
 					});
 					if (!response.ok) {
-						throw new Error("Failed to add game to favorites");
+						throw new Error("Failed to add creator to favorites");
 					}
 					// Manejar éxito
 					const updatedFavorites = [...getStore().favoritesCreators, creator];
 					setStore({ favoritesCreators: updatedFavorites });
 				} catch (error) {
-					console.error("Error adding game to favorites:", error);
+					console.error("Error adding creator to favorites:", error);
 				}
 			},
 
@@ -248,15 +244,15 @@ export const getState = ({ getStore, getActions, setStore }) => {
 					});
 
 					if (!response.ok) {
-						throw new Error('Failed to remove game from favorites');
+						throw new Error('Failed to remove creator from favorites');
 					}
 
-					console.log('Game removed from favorites successfully');
-					// Puedes hacer algo aquí, como actualizar el estado para reflejar el cambio
+					console.log('Creator removed from favorites successfully');
+					// actualizar el estado para reflejar el cambio
 					const updatedFavorites = getStore().favoritesCreators.filter(favoriteId => favoriteId.id !== creatorId);
 					setStore({ favoritesCreators: updatedFavorites });
 				} catch (error) {
-					console.error('Error removing game from favorites:', error);
+					console.error('Error removing creator from favorites:', error);
 					throw error;
 				}
 			},
@@ -283,7 +279,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 						const data = await response.json();
 						const creatorsData = await Promise.all(data.map(id => fetchCreatorData(id)));
 
-						const listaDeJuegosFavoritos = [...getStore().favoritesCreators, ...creatorsData];
+						const listaFavoritos = [...getStore().favoritesCreators, ...creatorsData];
 
 						let unicos = [];
 
@@ -291,21 +287,16 @@ export const getState = ({ getStore, getActions, setStore }) => {
 						let objetonUnicos = {};
 
 						// Loop for the array elements
-						for (let i in listaDeJuegosFavoritos) {
-							console.log(i);
+						for (let i in listaFavoritos) {
 							// Extract the title
-							let objTitle = listaDeJuegosFavoritos[i]['id'];
-							console.log(objTitle);
-
+							let objTitle = listaFavoritos[i]['id'];
 							// Use the title as the index
-							objetonUnicos[objTitle] = listaDeJuegosFavoritos[i];
-							console.log(listaDeJuegosFavoritos[i]);
+							objetonUnicos[objTitle] = listaFavoritos[i];
 						}
 
 						// Loop to push unique object into array
 						for (let i in objetonUnicos) {
 							unicos.push(objetonUnicos[i]);
-							console.log(unicos);
 						}
 
 						setStore({
@@ -334,13 +325,13 @@ export const getState = ({ getStore, getActions, setStore }) => {
 						body: JSON.stringify({ platform_id: platform.id })
 					});
 					if (!response.ok) {
-						throw new Error("Failed to add game to favorites");
+						throw new Error("Failed to add platform to favorites");
 					}
 					// Manejar éxito
 					const updatedFavorites = [...getStore().favoritesPlatforms, platform];
 					setStore({ favoritesPlatforms: updatedFavorites });
 				} catch (error) {
-					console.error("Error adding game to favorites:", error);
+					console.error("Error adding platform to favorites:", error);
 				}
 			},
 
@@ -355,11 +346,11 @@ export const getState = ({ getStore, getActions, setStore }) => {
 					});
 
 					if (!response.ok) {
-						throw new Error('Failed to remove game from favorites');
+						throw new Error('Failed to remove platform from favorites');
 					}
 
-					console.log('Game removed from favorites successfully');
-					// Puedes hacer algo aquí, como actualizar el estado para reflejar el cambio
+					console.log('Platform removed from favorites successfully');
+					// actualizar el estado para reflejar el cambio
 					const updatedFavorites = getStore().favoritesPlatforms.filter(favoriteId => favoriteId.id !== platformId);
 					setStore({ favoritesPlatforms: updatedFavorites });
 				} catch (error) {
@@ -390,7 +381,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 						const data = await response.json();
 						const platformsData = await Promise.all(data.map(id => fetchPlatformData(id)));
 
-						const listaDeJuegosFavoritos = [...getStore().favoritesPlatforms, ...platformsData];
+						const listaFavoritos = [...getStore().favoritesPlatforms, ...platformsData];
 
 						let unicos = [];
 
@@ -398,21 +389,17 @@ export const getState = ({ getStore, getActions, setStore }) => {
 						let objetonUnicos = {};
 
 						// Loop for the array elements
-						for (let i in listaDeJuegosFavoritos) {
-							console.log(i);
+						for (let i in listaFavoritos) {
 							// Extract the title
-							let objTitle = listaDeJuegosFavoritos[i]['id'];
-							console.log(objTitle);
+							let objTitle = listaFavoritos[i]['id'];
 
 							// Use the title as the index
-							objetonUnicos[objTitle] = listaDeJuegosFavoritos[i];
-							console.log(listaDeJuegosFavoritos[i]);
+							objetonUnicos[objTitle] = listaFavoritos[i];
 						}
 
 						// Loop to push unique object into array
 						for (let i in objetonUnicos) {
 							unicos.push(objetonUnicos[i]);
-							console.log(unicos);
 						}
 
 						setStore({
@@ -428,31 +415,9 @@ export const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			//Fetchs from Rawg.io API
+
+			
 			fetchBestGames2024: async () => {
 				try {
 					// Fetch best games of 2024 from the API
