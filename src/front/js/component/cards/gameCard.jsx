@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../../store/Context";
 import { useNavigate } from 'react-router-dom';
@@ -7,12 +7,16 @@ import { useNavigate } from 'react-router-dom';
 export const GameCard = ({ game }) => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        actions.fetchUserFavoriteGames()
+    }, []);
   
-    const handleAddToFavorites = async (gameId) => {
+    const handleAddToFavorites = async (game) => {
         if (store.token) {
-            await actions.addGameToFavorites(gameId);
+            await actions.addGameToFavorites(game);
             // Después de agregar el juego a favoritos, actualiza el estado del store
-            await actions.fetchUserFavoriteGames();
+            console.log(store.favoritesGames);
         } else {
             // Si el usuario no está autenticado, redirige a la página de inicio de sesión
             navigate("/login");
@@ -23,13 +27,14 @@ export const GameCard = ({ game }) => {
         if (store.token) {
             await actions.removeGameFromFavorites(gameId);
             // Espera a que se complete removeGameFromFavorites antes de llamar a fetchUserFavoriteGames
-            await actions.fetchUserFavoriteGames();
+            console.log(store.favoritesGames);
         }
     };
   
     const isGameInFavorites = (gameId) => {
         if (store.favoritesGames) {
-            return store.favoritesGames.includes(gameId);
+            console.log(store.favoritesGames, "lista de juegos favoritos");
+            return store.favoritesGames.filter(game => game.id == gameId).length;
         }
         return false;
     };
@@ -53,7 +58,7 @@ export const GameCard = ({ game }) => {
                                 Remove from Favorites
                             </button>
                         ) : (
-                            <button className="btn btn-outline-secondary" onClick={() => handleAddToFavorites(game.id)}>
+                            <button className="btn btn-outline-secondary" onClick={() => handleAddToFavorites(game)}>
                                 Add to Favorites
                             </button>
                         )}
