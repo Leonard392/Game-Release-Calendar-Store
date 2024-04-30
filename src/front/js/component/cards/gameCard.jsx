@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../../store/Context";
 import { useNavigate } from 'react-router-dom';
+import "../../../styles/gameCard.css"
 
 export const GameCard = ({ game }) => {
     const { store, actions } = useContext(Context);
@@ -45,18 +46,20 @@ export const GameCard = ({ game }) => {
                         <h5 className="card-title">{game.name}</h5>
                         <p className="card-text">Released Date: {game.released}</p>
                         <p className="card-text">Rating: {game.rating}</p>
+                        <div className="cards-btns">
                         <Link to={"/gameDetails/" + game.id}>
-                            <button type="button" className="btn btn-outline mt-3 me-2 learnMoreBtn">See more! </button>
+                            <button type="button" className="btn btn-outline mt-3 me-2 learnMoreBtn">SEE MORE! </button>
                         </Link>
                         {isGameInFavorites(game.id) ? (
-                            <button className="btn btn-outline-secondary" onClick={() => handleRemoveFromFavorites(game.id)}>
-                                Remove from Favorites
+                            <button className="btn card-btn" onClick={() => handleRemoveFromFavorites(game.id)}>
+                                <i class="fa-solid fa-heart"></i>
                             </button>
                         ) : (
-                            <button className="btn btn-outline-secondary" onClick={() => handleAddToFavorites(game)}>
-                                Add to Favorites
+                            <button className="btn card-btn" onClick={() => handleAddToFavorites(game)}>
+                                <i class="fa-regular fa-heart"></i>
                             </button>
                         )}
+                        </div>
                     </div>
                 </div>
             </div>
