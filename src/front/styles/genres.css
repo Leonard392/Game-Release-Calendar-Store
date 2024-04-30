@@ -1,12 +1,79 @@
-.games-body{
+/*Sidebar*/
+
+.sidebar-games{
+    width: 15%;
+    background-color: #000026;
+}
+
+.sidebar-games ul{
+    padding-top: 100px;
     text-align: center;
 }
 
-.games-showned{
-    margin-left: 40px;
+.sidebar-li{
+    padding-top: 20px;
 }
 
-.card{
-    color: #000026;
+.sidebar-link{
+    text-decoration: none;
+    font-size: 2rem;
+    color: white;
+    transition: all 0.3s;
+}
+
+.sidebar-link:hover{
+    color: #00CCFF;
+}
+
+/*Main content*/
+
+.games-list{
+    width: 80%;
     margin: 20px;
+    margin-top: 70px;
+    text-align: center;
+}
+
+.games-list h1{
+    margin-bottom: 50px;
+    font-size: 4rem;
+    color: white;
+}
+
+@media(max-width:1150px){
+    .sidebar-games{
+        width: 5%;
+    }
+
+    .games-list{
+        width: 70%;
+        margin-left: 160px;
+    }
+
+    .sidebar-link{
+        font-size: 1.4rem;
+    }
+}
+
+@media(max-width:695px){
+    .sidebar-games{
+        width: 5%;
+    }
+
+    .games-list h1{
+        font-size: 2.5rem;
+    }
+
+    .games-list{
+        margin-left: 60px;
+    }
+
+    .small-games-list{
+        align-items: center;
+        padding-left: 60px;
+    }
+
+    .sidebar-link{
+        font-size: 1.2rem;
+    }
 }

@@ -1,69 +1,70 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import "../../styles/genres.css"
 
 export const Sidebar = () => {
 
     return(
-    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light side col-lg-2 col-md-1 col-sm-1">
+    <div class="sidebar-games d-flex flex-column flex-shrink-0 p-3 side">
           <ul class="nav nav-pills flex-column mb-auto">
-          <li class="nav-item">
-              <Link to="/genres/action">
-                <p>ACTION</p>
+          <li className="nav-item sidebar-li">
+              <Link to="/genres/action" className="sidebar-link">
+                <p className="sidebar-text">ACTION</p>
               </Link>
             </li>
-            <li class="nav-item">
-              <Link to="/genres/adventure">
-                <p>ADVENTURE</p>
+            <li className="nav-item sidebar-li">
+              <Link to="/genres/adventure" className="sidebar-link">
+                <p className="sidebar-text">ADVENTURE</p>
               </Link>
             </li>
-            <li class="nav-item">
-              <Link to="/genres/arcade">
-                <p>ARCADE</p>
+            <li className="nav-item sidebar-li">
+              <Link to="/genres/arcade" className="sidebar-link">
+                <p className="sidebar-text">ARCADE</p>
               </Link>
             </li>
-            <li class="nav-item">
-              <Link to="/genres/casual">
-                <p>CASUAL</p>
+            <li className="nav-item sidebar-li">
+              <Link to="/genres/casual" className="sidebar-link">
+                <p className="sidebar-text">CASUAL</p>
               </Link>
             </li>
-            <li class="nav-item">
-              <Link to="/genres/fighting">
-                <p>FIGHTING</p>
+            <li className="nav-item sidebar-li">
+              <Link to="/genres/fighting" className="sidebar-link">
+                <p className="sidebar-text">FIGHTING</p>
               </Link>
             </li>
-            <li class="nav-item">
-              <Link to="/genres/indie">
-                <p>INDIE</p>
+            <li className="nav-item sidebar-li">
+              <Link to="/genres/indie" className="sidebar-link">
+                <p className="sidebar-text">INDIE</p>
               </Link>
             </li>
-            <li class="nav-item">
-              <Link to="/genres/puzzle">
-                <p>PUZZLE</p>
+            <li className="nav-item sidebar-li">
+              <Link to="/genres/puzzle" className="sidebar-link">
+                <p className="sidebar-text">PUZZLE</p>
               </Link>
             </li>
-            <li class="nav-item">
-              <Link to="/genres/racing">
-                <p>RACING</p>
+            <li className="nav-item sidebar-li">
+              <Link to="/genres/racing" className="sidebar-link">
+                <p className="sidebar-text">RACING</p>
               </Link>
             </li>
-            <li class="nav-item">
-              <Link to="/genres/shooter">
-                <p>SHOOTER</p>
+            <li className="nav-item sidebar-li">
+              <Link to="/genres/shooter" className="sidebar-link">
+                <p className="sidebar-text">SHOOTER</p>
               </Link>
             </li>
-            <li class="nav-item">
-              <Link to="/genres/simulation">
-                <p>SIMULATION</p>
+            <li className="nav-item sidebar-li">
+              <Link to="/genres/simulation" className="sidebar-link">
+                <p className="sidebar-text">SIMULATION</p>
               </Link>
             </li>
-            <li class="nav-item">
-              <Link to="/genres/sports">
-                <p>SPORTS</p>
+            <li className="nav-item sidebar-li">
+              <Link to="/genres/sports" className="sidebar-link">
+                <p className="sidebar-text">SPORTS</p>
               </Link>
             </li>
-            <li class="nav-item">
-              <Link to="/genres/strategy">
-                <p>STRATEGY</p>
+            <li className="nav-item sidebar-li">
+              <Link to="/genres/strategy" className="sidebar-link">
+                <p className="sidebar-text">STRATEGY</p>
               </Link>
             </li>
           </ul>

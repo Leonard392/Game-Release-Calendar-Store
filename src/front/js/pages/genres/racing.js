@@ -22,7 +22,7 @@ export const Racing = () => {
         <div className="games-body">
             <div className="row">
                 <Sidebar/>
-                <div className="games-list col-lg-9 col-md-8 col-sm-1">
+                <div className="games-list">
                     <h1>Racing Games</h1>
                     <div className="row">
                         {games.map(game => (

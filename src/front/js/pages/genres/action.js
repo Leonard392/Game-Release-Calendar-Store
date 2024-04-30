@@ -22,11 +22,11 @@ export const Action = () => {
         <div className="games-body">
             <div className="row">
                 <Sidebar/>
-                <div className="games-list col-lg-9 col-md-8 col-sm-1">
+                <div className="games-list">
                     <h1>Action Games</h1>
-                    <div className="row">
+                    <div className="row small-games-list">
                         {games.map(game => (
-                            <div className="col-lg-4 col-md-6 col-sm-12" key={game.id}>
+                            <div className="col-lg-4 col-md-6 col-sm-9" key={game.id}>
                                 <GameCard game={game} />
                             </div>
                         ))}
