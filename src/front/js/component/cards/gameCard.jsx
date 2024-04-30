@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../../store/Context";
 import { useNavigate } from 'react-router-dom';
-import "../../../styles/gameCard.css"
+import "../../../styles/card.css"
 
 export const GameCard = ({ game }) => {
     const { store, actions } = useContext(Context);

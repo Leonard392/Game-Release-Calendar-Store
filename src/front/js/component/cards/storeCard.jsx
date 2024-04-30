@@ -1,5 +1,6 @@
 import React , { useContext } from "react";
 import { Link } from "react-router-dom";
+import "../../../styles/card.css"
 
 export const StoreCard = ({ store }) => {
     return (
@@ -11,9 +12,6 @@ export const StoreCard = ({ store }) => {
           <Link to={"/storeDetails/" + store.id}>
               <button type="button" className="btn btn-outline mt-3 me-2 learnMoreBtn">See more! </button>
           </Link>
-          <button className="btn btn-primary">
-          Favorite
-          </button>
         </div>
       </div>
     );
