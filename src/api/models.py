@@ -13,8 +13,6 @@ class User(db.Model):
     # Relationship with favorite creators
     favorite_creators = db.relationship('FavoriteCreator', backref='user', lazy=True)
     # Relationship with favorite store
-    favorite_stores = db.relationship('FavoriteStore', backref='user', lazy=True)
-    # Relationship with favorite store
     favorite_platforms = db.relationship('FavoritePlatform', backref='user', lazy=True)
 
     def __repr__(self):
@@ -36,11 +34,6 @@ class FavoriteCreator(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     creator_id = db.Column(db.Integer, nullable=False) 
-
-class FavoriteStore(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    store_id = db.Column(db.Integer, nullable=False) 
 
 class FavoritePlatform(db.Model):
     id = db.Column(db.Integer, primary_key=True)

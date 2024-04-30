@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, FavoriteStore, FavoriteGame, FavoriteCreator, FavoritePlatform
+from api.models import db, User, FavoriteGame, FavoriteCreator, FavoritePlatform
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
@@ -197,65 +197,6 @@ def get_user_creator_favorites():
     user_creator_favorites = [creator.creator_id for creator in user.favorite_creators]
     
     return jsonify(user_creator_favorites), 200
-
-#ROUTES FOR FAVORITE STORE
-
-@api.route('/favorites/stores', methods=['POST'])
-@jwt_required()
-def add_store_to_favorites():
-    try:
-        user_id = get_jwt_identity()
-        data = request.json
-        store_id = data.get('store_id')
-        
-        if not store_id:
-            return jsonify({"message": "Store ID is required"}), 400
-        
-        user = User.query.get(user_id)
-        if not user:
-            return jsonify({"message": "User not found"}), 404
-        
-        # Verificar si el juego ya está en la lista de favoritos del usuario
-        if FavoriteStore.query.filter_by(user_id=user_id, store_id=store_id).first():
-            return jsonify({"message": "Store already in favorites"}), 400
-        
-        # Agregar el juego a la lista de favoritos del usuario
-        new_favorite = FavoriteStore(user_id=user_id, store_id=store_id)
-        db.session.add(new_favorite)
-        db.session.commit()
-        
-        return jsonify({"message": "Store added to favorites successfully"}), 201
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
-
-@api.route('/favorites/stores/<int:store_id>', methods=['DELETE'])
-@jwt_required()
-def remove_store_from_favorites(store_id):
-    user_id = get_jwt_identity()
-    
-    user = User.query.get(user_id)
-    
-    # Verificar si el juego está en la lista de favoritos del usuario
-    favorite_store = FavoriteStore.query.filter_by(user_id=user_id, store_id=store_id).first()
-    if not favorite_store:
-        return jsonify({"message": "Store not found in favorites"}), 404
-    
-    # Eliminar el juego de la lista de favoritos del usuario
-    db.session.delete(favorite_store)
-    db.session.commit()
-    
-    return jsonify({"message": "Creator removed from favorites successfully"}), 200
-
-@api.route('/favorites/stores', methods=['GET'])
-@jwt_required()
-def get_user_store_favorites():
-    user_id = get_jwt_identity()
-    user = User.query.get(user_id)
-    
-    user_store_favorites = [store.store_id for store in user.favorite_stores]
-    
-    return jsonify(user_store_favorites), 200
-
 
 
 # ROUTES FOR FAVORITE PLATFORMS

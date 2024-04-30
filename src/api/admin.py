@@ -1,7 +1,7 @@
   
 import os
 from flask_admin import Admin
-from .models import db, User, FavoriteCreator, FavoriteGame, FavoriteStore
+from .models import db, User, FavoriteCreator, FavoriteGame, FavoritePlatform
 from flask_admin.contrib.sqla import ModelView
 
 def setup_admin(app):
@@ -14,7 +14,7 @@ def setup_admin(app):
     admin.add_view(ModelView(User, db.session))
     admin.add_view(ModelView(FavoriteCreator, db.session))
     admin.add_view(ModelView(FavoriteGame, db.session))
-    admin.add_view(ModelView(FavoriteStore, db.session))
+    admin.add_view(ModelView(FavoritePlatform, db.session))
 
     # You can duplicate that line to add mew models
     # admin.add_view(ModelView(YourModelName, db.session))
