@@ -21,7 +21,6 @@ body{
 
 .left{
     width: 60%;
-    
     padding: 0 80px;
 }
 
@@ -75,11 +74,23 @@ body{
 
 .games-2024{
     margin-top: 50px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 80px;
+    overflow: hidden;
 }
 
+.games-list-2024{
+  width: 100%;
+  align-items: center;
+}
+
+
 .best2024GamesTittle{
-    font-size: 60px;
+    font-size: 4rem;
     font-weight: 800;
+    color: white;
+    margin-bottom: 80px;
 }
 
 /*Media queries*/

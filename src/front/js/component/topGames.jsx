@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/Context.js";
 import { GameCard } from "./cards/gameCard.jsx";
+import "../../styles/home.css"
 
 export const TopGames = () => {
   const { store } = useContext(Context);
@@ -10,9 +11,9 @@ export const TopGames = () => {
 
   return (
     <div className="games-2024">
-        <div className="games-list">
+        <div className=" games-list-2024">
           <h1 className="best2024GamesTittle">Best 2024 Games</h1>
-          <div className="row">
+          <div className="row g2024">
             {sixTopGames.map(game => (
               <div className="col-lg-4 col-md-6 col-sm-12" key={game.id}>
                 <GameCard game={game} />

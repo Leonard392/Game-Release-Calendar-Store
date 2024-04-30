@@ -15,6 +15,14 @@
     overflow: clip;
 }
 
+.card-title{
+    color: white;
+}
+
+.card-text{
+    color: #000026;
+}
+
 .cards-btns{
     margin-bottom: 0px;
     display: flex;
