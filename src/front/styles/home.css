@@ -71,7 +71,6 @@ body{
     padding-right: 0px;
 }
 
-
 .games-2024{
     margin-top: 50px;
     width: 100%;
@@ -85,9 +84,19 @@ body{
   align-items: center;
 }
 
+.mg2024{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.g2024{
+  margin: 25px;
+  width: 30%;
+}
 
 .best2024GamesTittle{
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: 800;
     color: white;
     margin-bottom: 80px;
@@ -110,6 +119,10 @@ body{
 
   .logo-img{
     width: 100%;
+  }
+
+  .g2024{
+    width: 80%;
   }
 }
 

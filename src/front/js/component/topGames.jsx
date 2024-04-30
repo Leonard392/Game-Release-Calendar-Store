@@ -13,9 +13,9 @@ export const TopGames = () => {
     <div className="games-2024">
         <div className=" games-list-2024">
           <h1 className="best2024GamesTittle">Best 2024 Games</h1>
-          <div className="row g2024">
+          <div className="row mg2024">
             {sixTopGames.map(game => (
-              <div className="col-lg-4 col-md-6 col-sm-12" key={game.id}>
+              <div className="g2024" key={game.id}>
                 <GameCard game={game} />
               </div>
             ))}
