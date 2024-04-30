@@ -10,7 +10,6 @@ import { Stores } from "./pages/navbar/stores.js";
 import { Login } from "./pages/login";
 import { Signup } from "./pages/signup";
 import { Profile } from "./pages/profile.js";
-import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
 //user

@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/Context";
 import { Link } from "react-router-dom";
+import { GamesSlide } from "../component/gamesSlide.jsx";
 import { TopGames } from "../component/topGames.jsx";
 import { Features } from "../component/features.jsx";
-import logo3 from "../../img/5.webp";
+import logo3 from "../../img/logo.webp";
 import "../../styles/home.css";
 
 export const Home = () => {
