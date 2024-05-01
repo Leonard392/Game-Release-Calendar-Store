@@ -28,7 +28,7 @@ export const PlatformDetails = () => {
                         {/* Detalles de la plataforma */}
                         <h1><strong>PLATFORM</strong> DETAILS</h1>
                         <h2>{platformDetails.name}</h2>
-                        <p><strong>Games Count:</strong> {platformDetails.games_count}</p>
+                        <p><strong><i class="fa-solid fa-gamepad"></i> Games Count:</strong> {platformDetails.games_count}</p>
                     </div>
                 </>
             ) : (

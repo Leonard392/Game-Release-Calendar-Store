@@ -29,7 +29,7 @@ export const CreatorDetails = () => {
                         <h1><span>CREATOR</span> DETAILS</h1>
                         <h2 className="details-title">{creatorDetails.name}</h2>
                         <p><strong>Description:</strong> {creatorDetails.description}</p>
-                        <p><strong>Games Created:</strong> {creatorDetails.games_count}</p>
+                        <p><strong><i class="fa-solid fa-gamepad"></i> Games Created:</strong> {creatorDetails.games_count}</p>
                     </div>
                 </>
             ) : (

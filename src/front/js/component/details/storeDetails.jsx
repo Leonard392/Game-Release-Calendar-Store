@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "../../../styles/details.css";
 
 
 export const StoreDetails = ({ gameId }) => {
@@ -16,28 +17,24 @@ export const StoreDetails = ({ gameId }) => {
             .catch(err => err)
     }, []);
 
-    const backgroundStyle = {
-        backgroundImage: storeDetails ? `url(${storeDetails.image_background})` : 'none',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        color: 'white',
-        textAlign: 'center',
-    };
-
     return (
-        <div style={backgroundStyle}>
+        <div className="details">
             {storeDetails ? (
-                <div>
-                    <h2>{storeDetails.name}</h2>
-                    <p>{storeDetails.description}</p>
-                    {/* Render more details as needed */}
-                </div>
+                <>
+                    <div className="details-left">
+                        {/* Imagen del creador */}
+                        <img src={storeDetails.image_background} alt={storeDetails.name} className="details-img" />
+                    </div>
+                    <div className="details-right">
+                        {/* Detalles de la plataforma */}
+                        <h1><strong>STORE</strong> DETAILS</h1>
+                        <h2>{storeDetails.name}</h2>
+                        <p><strong><i class="fa-solid fa-gamepad"></i> Games Count:</strong> {storeDetails.games_count}</p>
+                        <p><strong><i class="fa-solid fa-globe"></i> You can find us:</strong> {storeDetails.domain}</p>
+                    </div>
+                </>
             ) : (
-                <p>Loading game details...</p>
+                <p>Loading platform details...</p>
             )}
         </div>
     );
