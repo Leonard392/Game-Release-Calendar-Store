@@ -479,7 +479,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 			fetchActionGames: async () => {
 				try {
 					// Fetch action games from the API
-					const response = await fetch(`https://api.rawg.io/api/games?genres=action&page_size=${PAGE_SIZE}&key=${KEY_API}`);
+					const response = await fetch(`https://api.rawg.io/api/games?genres=action&key=${KEY_API}`);
 					const data = await response.json();
 					setStore({ actionGames: data.results });
 				} catch (error) {

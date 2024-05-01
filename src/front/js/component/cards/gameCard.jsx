@@ -5,7 +5,7 @@ import { Context } from "../../store/Context";
 import { useNavigate } from 'react-router-dom';
 import "../../../styles/card.css"
 
-export const GameCard = ({ game }) => {
+export const GameCard = ({ game, fowardRef }) => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ export const GameCard = ({ game }) => {
     };
   
     return (
-        <div className="card mb-3">
+        <div className="card mb-3" ref={fowardRef}>
             <div className="row no-gutters">
                 <div className="col-md-12">
                     <img src={game.background_image} className="card-img" alt={game.name} />
