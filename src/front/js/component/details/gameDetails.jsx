@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../../../styles/details.css"
+import "../../../styles/details.css";
 
 export const GameDetails = ({ gameId }) => {
     const params = useParams();
