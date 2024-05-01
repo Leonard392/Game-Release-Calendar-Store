@@ -27,7 +27,7 @@ export const Adventure = () => {
                     <div className="row">
                         {games.map(game => (
                             <div className="col-lg-4 col-md-6 col-sm-12" key={game.id}>
-                                <GameCard game={game} fowardRef={lastGameCard}/>
+                                <GameCard game={game}/>
                             </div>
                         ))}
                     </div>
