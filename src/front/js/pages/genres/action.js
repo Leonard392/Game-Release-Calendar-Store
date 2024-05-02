@@ -51,7 +51,7 @@ export const Action = () => {
             <div className="row">
                 <Sidebar/>
                 <div className="games-list">
-                    <h1>Action Games</h1>
+                    <h1><span>Action</span> Games</h1>
                     <div className="row small-games-list">
                         {games.map(game => (
                             <div className="col-lg-4 col-md-6 col-sm-9" key={game.id}>

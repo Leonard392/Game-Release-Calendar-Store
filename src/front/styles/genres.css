@@ -40,6 +40,10 @@
     color: white;
 }
 
+.games-list h1 span{
+    color: #00CCFF;
+}
+
 @media(max-width:1150px){
     .sidebar-games{
         width: 5%;
