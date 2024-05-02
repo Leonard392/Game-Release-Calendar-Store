@@ -71,17 +71,3 @@ export const Sidebar = () => {
     </div>
     )
 }
-
-
-
-const GenreComponent = () => {
-  
-
-  return (
-    <div>
-      
-    </div>
-  );
-};
-
-export default GenreComponent;
