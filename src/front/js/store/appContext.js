@@ -28,10 +28,6 @@ const injectContext = PassedComponent => {
 			 * store, instead use actions, like this:
 			 **/
 			state.actions.fetchBestGames2024();
-			state.actions.fetchBestGames2023();
-			state.actions.fetchBestClassics();
-			state.actions.fetchBestOfAllTimes();
-			state.actions.fetchUpcomingReleases();
 			state.actions.fetchTopCreators();
 			state.actions.fetchPlatforms();
 			state.actions.fetchStores();
