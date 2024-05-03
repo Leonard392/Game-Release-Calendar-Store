@@ -1,0 +1,25 @@
+
+.sidebar-games{
+    width: 15%;
+    background-color: #000026;
+}
+
+.sidebar-games ul{
+    padding-top: 100px;
+    text-align: center;
+}
+
+.sidebar-li{
+    padding-top: 20px;
+}
+
+.sidebar-link{
+    text-decoration: none;
+    font-size: 2rem;
+    color: white;
+    transition: all 0.3s;
+}
+
+.sidebar-link:hover{
+    color: #00CCFF;
+}

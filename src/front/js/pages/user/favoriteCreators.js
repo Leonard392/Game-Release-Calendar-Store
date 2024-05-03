@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Context } from "../../store/Context";
 import { CreatorCard } from "../../component/cards/creatorCard.jsx";
 import { SidebarUser } from "./sidebarUser.js";
+import "../../../styles/genres.css";
 
 
 export const FavoriteCreators = () => {
@@ -13,16 +14,21 @@ export const FavoriteCreators = () => {
     }, []);
 
     return (
-        <div>
-            <SidebarUser/>
-            <h2>Favorite Creators</h2>
-            <div className="row">
-                {store.favoritesCreators.map(creator => (
+        
+            <div className="games-body">
+                <div className="row">
+                    <SidebarUser/>
+                    <div className="games-list">
+                        <h1><span>MY</span> CREATORS</h1>
+                        <div className="row small-games-list">
+                        {store.favoritesCreators.map(creator => (
                     <div className="col-lg-4 col-md-6 col-sm-12" key={creator.id}>
                         <CreatorCard creator={creator} />
                     </div>
                 ))}
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    );
+        )
 };
