@@ -38,9 +38,14 @@ ul{
     color: #000026;
 }
 
+.link-logo h1 span{
+    color: #00CCFF;
+}
+
 .link-logo:hover{
     color: #000026;
 }
+
 
 .navBar .links{
     display: flex;

@@ -16,7 +16,7 @@ export const Navbar = () => {
             <div className="navBar">
                 <div className="logo">
                     <Link to="/" className="link-logo">
-                        <h1>Ninja Station</h1>
+                        <h1><span>Ninja</span> Station</h1>
                     </Link>
                 </div>
                 <ul className={`links ${isOpen ? "open" : ""}`}>
