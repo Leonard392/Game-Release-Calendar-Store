@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import { Context } from "../../store/Context";
 import { Platformcard } from "../../component/cards/platformCard.jsx";
+import { SidebarUser } from "./sidebarUser.js";
 
 
 export const FavoritePlatforms = () => {
@@ -13,6 +14,7 @@ export const FavoritePlatforms = () => {
 
     return (
         <div>
+            <SidebarUser/>
             <h2>My Stores</h2>
             <div className="row">
                 {store.favoritesPlatforms.map(platform => (

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import { Context } from "../../store/Context";
 import { CreatorCard } from "../../component/cards/creatorCard.jsx";
+import { SidebarUser } from "./sidebarUser.js";
 
 
 export const FavoriteCreators = () => {
@@ -13,6 +14,7 @@ export const FavoriteCreators = () => {
 
     return (
         <div>
+            <SidebarUser/>
             <h2>Favorite Creators</h2>
             <div className="row">
                 {store.favoritesCreators.map(creator => (

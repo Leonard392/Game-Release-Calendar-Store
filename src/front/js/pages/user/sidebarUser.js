@@ -8,17 +8,17 @@ export const SidebarUser = () => {
     <div class="sidebar-games d-flex flex-column flex-shrink-0 p-3 side">
           <ul class="nav nav-pills flex-column mb-auto">
           <li className="nav-item sidebar-li">
-              <Link to="/genres/action" className="sidebar-link">
+              <Link to="/favorites/games" className="sidebar-link">
                 <p className="sidebar-text">WISH LIST</p>
               </Link>
             </li>
             <li className="nav-item sidebar-li">
-              <Link to="/genres/adventure" className="sidebar-link">
+              <Link to="/favorites/platforms" className="sidebar-link">
                 <p className="sidebar-text">MY PLATFORMS</p>
               </Link>
             </li>
             <li className="nav-item sidebar-li">
-              <Link to="/genres/arcade" className="sidebar-link">
+              <Link to="/favorites/creators" className="sidebar-link">
                 <p className="sidebar-text">FAVORITE CREATORS</p>
               </Link>
             </li>

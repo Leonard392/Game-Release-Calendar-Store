@@ -14,6 +14,9 @@ import injectContext from "./store/appContext";
 
 //user
 import { Favorites } from "./pages/user/favorites.js";
+import { FavoriteGames } from "./pages/user/favoriteGames.js";
+import { FavoritePlatforms} from "./pages/user/favoritePlatforms.js";
+import { FavoriteCreators} from "./pages/user/favoriteCreators.js";
 
 
 //import genres view
@@ -73,6 +76,9 @@ const Layout = () => {
                         <Route element={<Login />} path="/login" />
                         <Route element={<Signup />} path="/signup" />
                         <Route element={<Favorites />} path="/favorites" />
+                        <Route element={<FavoriteGames />} path="/favorites/games" />
+                        <Route element={<FavoritePlatforms />} path="/favorites/platforms" />
+                        <Route element={<FavoriteCreators />} path="/favorites/creators" />
                         <Route element={<Profile />} path="/profile" />
                         <Route element={<GameDetails />} path="/gameDetails/:id" />
                         <Route element={<CreatorDetails />} path="/creatorDetails/:id" />

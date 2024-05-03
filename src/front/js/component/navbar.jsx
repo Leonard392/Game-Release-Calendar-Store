@@ -52,7 +52,7 @@ export const Navbar = () => {
                     </div>
                 ) : (
                     <div className="signup-login">
-                        <Link to="/favorites" className="signup-login-link">
+                        <Link to="/favorites/games" className="signup-login-link">
                             <button className="action_btn signup-btn">Me!</button>
                         </Link>
                         <Link to="/" className="signup-login-link"> {/*Cambiado a '/logout' para enlazar a la página de cierre de sesión */}
@@ -99,7 +99,7 @@ export const Navbar = () => {
                         </div>
                     ) : (
                         <div className="signup-login">
-                            <Link to="/favorites" className="signup-login-link">
+                            <Link to="/favorites/games" className="signup-login-link">
                                 <button className="action_btn signup-btn">Me!</button>
                             </Link>
                             <Link to="/" className="signup-login-link"> {/*Cambiado a '/logout' para enlazar a la página de cierre de sesión */}
