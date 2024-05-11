@@ -8,33 +8,17 @@ export const Footer = () => (
 			<div className="sb_footer-links">
 				<div className="sb_footer-links-div">
 					<h4>For Bussines</h4>
-					<Link to="/" className="footer-link">
-						<p>test</p>
-					</Link>
-					<Link to="/" className="footer-link">
-						<p>test</p>
-					</Link>
-					<Link to="/" className="footer-link">
-						<p>test</p>
-					</Link>
+					<a href="https://www.linkedin.com/in/leonardorodriguez392/" className="footer-link">LinkedIn</a>
+					<a href="https://github.com/Leonard392" className="footer-link">Github</a>
 				</div>
 				<div className="sb_footer-links-div">
 					<h4>Resources</h4>
-					<Link to="/" className="footer-link">
-						<p>test2</p>
-					</Link>
-					<Link to="/" className="footer-link">
-						<p>test2</p>
-					</Link>
-					<Link to="/" className="footer-link">
-						<p>test2</p>
-					</Link>
+					<a href="https://github.com/Leonard392/Game-Release-Calendar-Store" className="footer-link">Code</a>
+					<a href="https://4geeks.com/" className="footer-link">4Geeks Academy</a>
 				</div>
 				<div className="sb_footer-links-div">
 					<h4>Partners</h4>
-					<Link to="/" className="footer-link">
-						<p>Rawg.io</p>
-					</Link>
+					<a href="https://rawg.io/" className="footer-link">Rawg.io</a>
 				</div>
 				<div className="sb_footer-links-div">
 					<h4>Cooming soon on</h4>

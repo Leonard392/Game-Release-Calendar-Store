@@ -22,7 +22,7 @@ li{
     align-items: center;
     justify-content: space-between;
 }
-
+      
 ul{
     margin-bottom: 0;
 }
@@ -45,7 +45,6 @@ ul{
 .link-logo:hover{
     color: #000026;
 }
-
 
 .navBar .links{
     display: flex;

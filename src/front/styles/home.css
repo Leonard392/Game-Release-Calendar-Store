@@ -108,8 +108,8 @@ body{
   .main-content{
     flex-direction: column;
     margin: 0;
+    margin-bottom: 250px;
   }
-
 
   .left{
     width: 100%;
@@ -129,5 +129,8 @@ body{
 @media(max-width: 650px){
   .left h1{
     font-size: 55px;
+  }
+  .main-content{
+    margin-bottom: 100px;
   }
 }
